@@ -359,8 +359,8 @@
                         <input type="number" id="ukuran" name="ukuran" min="10" max="100" placeholder="Contoh: 30, 50, 100 (untuk yng memesan Diatas 30ml. bisa chat dulu Harga)" required>
                     </div>
                     <div class="form-group">
-                        <label for="keterangan">Keterangan Lain-lain:</label>
-                        <textarea id="keterangan" name="keterangant" rows="10" placeholder="Contoh : Saya ingin parfum ini membantu meningkatkan karisma dan daya tarik saya dalam pekerjaan, Lawan Jenis, serta memberikan energi positif setiap hari. Atau, saya ingin parfum ini mendukung fokus dan ketenangan batin saya" required></textarea>
+                        <label for="keterangan">Ungkapkan Keinginan Anda (optional):</label>
+                        <textarea id="keterangan" name="keterangan" rows="10" placeholder="Contoh : Saya ingin parfum ini membantu meningkatkan karisma dan daya tarik saya dalam pekerjaan, Lawan Jenis, serta memberikan energi positif setiap hari. Atau, saya ingin parfum ini mendukung fokus dan ketenangan batin saya" required></textarea>
                     </div>
                   
 
@@ -1538,7 +1538,7 @@
                                 `Jenis Parfum: ${jenisParfum}\n` +
                                 `Parfum: ${parfum}\n` +
                                 `Ukuran: ${ukuran} ml\n\n` +
-                                `Keterangan: ${keterangan}\n` +
+                                `Keterangan: ${keterangan || 'Tidak disebutkan'}\n` +
                                 `Terima kasih.`;
 
                 // Ganti nomor WhatsApp di sini jika perlu
