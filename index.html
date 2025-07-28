@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energia Aura Parfume - Beranda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Warna Dasar */
+        :root {
+            --color-primary: #000000; /* Hitam */
+            --color-secondary: #DAA520; /* Emas */
+            --color-tertiary: #FFFFFF; /* Putih */
+            --color-text-light: #F0F0F0; /* Abu-abu terang untuk teks di latar gelap */
+            --color-text-dark: #333333; /* Abu-abu gelap untuk teks di latar terang */
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif; /* Font utama yang bersih dan mudah dibaca */
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-text-light);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--color-primary);
+            color: var(--color-tertiary);
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 17px;
+            left: 60px;
+            z-index: 11;
+        }
+
+        .logo-container img {
+            height: 135px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        header h1 {
+            font-family: 'Merriweather', serif; /* Font judul utama yang kuat */
+            font-size: 3.5em;
+            margin: 0;
+            letter-spacing: 2px;
+            color: var(--color-secondary);
+            text-transform: uppercase;
+        }
+
+        nav {
+            background-color: var(--color-primary);
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--color-secondary);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: var(--color-tertiary);
+            text-decoration: none;
+            padding: 10px 25px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-weight: 600; /* Sedikit lebih tebal */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1em;
+        }
+
+        nav a:hover, nav a.active-nav {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: var(--color-tertiary);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            font-family: 'Merriweather', serif; /* Font judul yang kuat */
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            position: relative;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-secondary);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 30px;
+            background-color: var(--color-primary);
+            color: var(--color-tertiary);
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: inset 0 0 15px rgba(218, 165, 32, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', serif; /* Font hero h1 */
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: var(--color-secondary);
+            font-weight: 900; /* Lebih tebal untuk penekanan */
+        }
+
+        .hero p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.3em;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--color-text-light);
+            font-weight: 400;
+        }
+
+        /* --- Gaya Baru untuk Carousel Parfum --- */
+        .perfume-carousel-container {
+            overflow: hidden; /* Penting untuk menyembunyikan bagian luar gambar */
+            width: 100%;
+            margin: 40px auto; /* Memberi jarak atas dan bawah */
+            white-space: nowrap; /* Mencegah gambar turun ke baris baru */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Sedikit bayangan */
+            border-radius: 10px;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.2); /* Latar belakang semi-transparan */
+        }
+
+        .perfume-carousel {
+            display: inline-block; /* Agar semua gambar bisa dalam satu baris dan bergerak */
+            animation: slide-perfume 25s linear infinite; /* Sesuaikan durasi dan kecepatan */
+        }
+
+        .perfume-carousel img {
+            height: 250px; /* Sesuaikan tinggi gambar parfum Anda */
+            width: auto;
+            margin: 0 20px; /* Jarak antar gambar */
+            vertical-align: middle; /* Menjaga gambar tetap di tengah secara vertikal */
+            border-radius: 8px; /* Sudut sedikit membulat */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Bayangan kecil pada gambar */
+        }
+
+        @keyframes slide-perfume {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); } /* Geser separuh dari lebar total */
+        }
+        /* --- Akhir Gaya Baru untuk Carousel Parfum --- */
+
+        /* Gaya untuk tombol WhatsApp */
+        .whatsapp-button {
+            display: inline-block;
+            background-color: #25D366; /* Warna hijau WhatsApp */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-button:hover {
+            background-color: #1DA851;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-button img {
+            vertical-align: middle;
+            margin-right: 8px;
+            height: 20px; /* Ukuran ikon WhatsApp */
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            .logo-container {
+                top: 10px;
+                left: 10px;
+            }
+            .logo-container img {
+                height: 60px;
+            }
+            nav a {
+                padding: 8px 15px;
+                margin: 0 5px;
+            }
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            .hero {
+                padding: 40px 20px;
+            }
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            .perfume-carousel img {
+                height: 180px; /* Sesuaikan tinggi gambar untuk mobile */
+                margin: 0 10px;
+            }
+            .whatsapp-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                margin: 5px 0;
+                width: 80%;
+            }
+            .perfume-carousel img {
+                height: 150px; /* Lebih kecil lagi untuk mobile sangat kecil */
+            }
+            .whatsapp-button img {
+                height: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://iili.io/FkLJNEP.md.png" alt="Energia Aura Parfume Logo">
+        </div>
+        <h1>Energia Aura Parfume</h1>
+    </header>
+
+    <nav>
+        <a href="index.html" class="active-nav">Beranda</a>
+        <a href="katalog.html">Katalog</a>
+	    <a href="pemesanan.html">Pesan Sekarang</a>
+        <a href="#contact">Kontak</a>
+    </nav>
+
+    <div class="container" id="home">
+        <div class="hero">
+            <h1>Selamat Datang di Energia Aura Parfume</h1>
+
+            <p>Anda mencari esensi yang lebih dari sekadar wewangian? Energia Aura Parfume adalah jawabannya! Setiap tetesnya adalah perpaduan harmonis antara aroma pilihan dan energi spiritual.</p>
+
+            <div class="perfume-carousel-container">
+                <div class="perfume-carousel">
+                    <img src="https://iili.io/FvMQsa4.md.png" alt="Parfum 1">
+                    <img src="https://iili.io/FvMZUHQ.md.png" alt="Parfum 2">
+                    <img src="https://iili.io/FvMt3fs.md.png" alt="Parfum 3">
+                    <img src="https://iili.io/FvMQsa4.md.png" alt="Parfum 1 Ulang">
+                    <img src="https://iili.io/FvMZUHQ.md.png" alt="Parfum 2 Ulang">
+                    <img src="https://iili.io/FvMt3fs.md.png" alt="Parfum 3 Ulang">
+                    </div>
+            </div>
+
+            <p>Bukan sekadar parfum biasa, setiap botol Energia Aura Parfume telah melalui proses pemberkatan dan pengisian energi spiritual yang mendalam. Ini mengubahnya menjadi lebih dari sekadar wewangian, melainkan alat untuk transformasi diri.</p>
+
+            <p>Dirancang khusus bagi Anda yang percaya bahwa keharuman sejati memancar dari dalam, parfum ini akan membantu Anda membangkitkan dan memancarkan pesona alami. Rasakan bagaimana Energia Aura Parfume menyelaraskan energi Anda, memperbaiki, dan menguatkan aura positif dalam diri Anda.</p>
+
+            <p>Siapkah Anda merasakan keharuman yang memberdayakan?.</p>
+
+            <br><br>
+
+            <p>Temukan aroma yang sempurna yang mencerminkan kepribadian dan gaya Anda. Jelajahi katalog parfum kami yang beragam atau langsung pesan aroma favorit Anda!</p>
+
+            <p><a href="katalog.html" style="display: inline-block; margin-top: 20px; padding: 12px 25px; background-color: var(--color-secondary); color: var(--color-primary); text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s ease;">Lihat Katalog Sekarang</a></p>
+        </div>
+    </div>
+
+    <div class="container" id="contact" style="text-align: center; margin-top: 50px;">
+        <h2>Kontak Kami</h2>
+        <p>Jika Anda memiliki pertanyaan lebih lanjut atau ingin memesan, jangan ragu untuk menghubungi kami:</p>
+        <p>Email: <a href="mailto:energiaauraparfume@gmail.com" style="color: var(--color-secondary); text-decoration: none;">energiaauraparfume@gmail.com</a></p>
+        <p>Telepon/WA: 085142156602</p>
+
+        <a href="https://wa.me/6285142156602?text=Halo%20Energia%20Aura%20Parfume,%20saya%20tertarik%20dengan%20produk%20Anda." class="whatsapp-button" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
+            Hubungi via WhatsApp
+        </a>
+        <br><br>
+        <p>Alamat: Komp. Taman Cikawao Persada Blok G1 No.21</p>
+        <p style="margin-top: 30px; font-size: 0.9em; color: #777;">&copy; 2024 Energia Aura Parfume. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Hanya untuk menandai navigasi aktif jika kembali ke home dari katalog
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname.split('/').pop();
+            if (currentPath === 'index.html' || currentPath === '') {
+                document.querySelector('nav a[href="index.html"]').classList.add('active-nav');
+            }
+        });
+    </script>
+</body>
+</html>
