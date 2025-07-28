@@ -353,6 +353,11 @@
                         <label for="ukuran">Ukuran (ml):</label>
                         <input type="number" id="ukuran" name="ukuran" min="10" max="100" placeholder="Contoh: 30, 50, 100 (untuk yng memesan Diatas 30ml. bisa chat dulu Harga)" required>
                     </div>
+                    <div class="form-group">
+                        <label for="keterangan">Keterangan Lain-lain:</label>
+                        <textarea id="keterangan" name="keterangant" rows="4" placeholder="Contoh : saya ingin dicampur antara dunhill blue dan vip man - atau dll" required></textarea>
+                    </div>
+                  
 
                     <button type="submit">Pesan Sekarang</button>
                 </form>
@@ -1512,6 +1517,7 @@
                 const jenisParfum = jenisParfumSelect.value;
                 const parfum = parfumSelect.options[parfumSelect.selectedIndex].text; // Ambil teks yang dipilih
                 const ukuran = document.getElementById('ukuran').value;
+                const keterangan = document.getElementById('keterangan').value;
 
                 if (!parfum || parfum === "-- Pilih Parfum --" || parfum === "Tidak ada parfum ditemukan.") {
                     alert("Mohon pilih parfum yang valid.");
@@ -1525,6 +1531,8 @@
                                 `Jenis Parfum: ${jenisParfum}\n` +
                                 `Parfum: ${parfum}\n` +
                                 `Ukuran: ${ukuran} ml\n\n` +
+                                `Keterangan: ${keterangan}\n` +
+                    
                                 `Terima kasih.`;
 
                 // Ganti nomor WhatsApp di sini jika perlu
