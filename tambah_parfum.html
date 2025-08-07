@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Parfum Baru</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Definisi Variabel Warna --- */
+        :root {
+            --color-primary: #000000;
+            --color-secondary: #DAA520;
+            --color-tertiary: #FFFFFF;
+            --color-text-dark: #333333;
+            --color-background: #f4f4f4;
+            --color-dark-grey-bg: #1a1a1a;
+            --color-light-grey: #ccc;
+        }
+        /* --- Global Styles --- */
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: var(--color-tertiary);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-family: 'Merriweather', serif;
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--color-text-dark);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--color-light-grey);
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: 'Open Sans', sans-serif;
+        }
+        textarea#jsonInput {
+            min-height: 200px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        button, .back-btn {
+            background-color: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .button-group button, .button-group .back-btn {
+            flex: 1;
+        }
+        button:hover, .back-btn:hover {
+            background-color: #c98c00;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Tambah Parfum Baru</h2>
+    <form id="addProductForm">
+        <div class="form-group">
+            <label for="productName">Nama Parfum:</label>
+            <input type="text" id="productName" required>
+        </div>
+        <div class="form-group">
+            <label for="productCategory">Kategori:</label>
+            <select id="productCategory" required>
+                <option value="Pria">Pria</option>
+                <option value="Wanita">Wanita</option>
+                <option value="Unisex">Unisex</option>
+                <option value="Pasangan">Pasangan</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="productNotes">Notes (pisahkan dengan koma):</label>
+            <input type="text" id="productNotes" required>
+        </div>
+        <div class="form-group">
+            <label for="productPersonality">Karakteristik (pisahkan dengan koma):</label>
+            <input type="text" id="productPersonality" required>
+        </div>
+        <div class="form-group">
+            <label for="productDescription">Deskripsi:</label>
+            <textarea id="productDescription" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="productIdealFor">Ideal untuk:</label>
+            <input type="text" id="productIdealFor" required>
+        </div>
+        <div class="form-group">
+            <label for="productEnhances">Membantu memancarkan:</label>
+            <input type="text" id="productEnhances" required>
+        </div>
+        <div class="button-group">
+            <button type="submit">Tambah Produk</button>
+            <a href="katalog.html" class="back-btn">Kembali ke Katalog</a>
+        </div>
+    </form>
+
+    <hr>
+
+    <h2>Tambah Produk dengan Data JSON</h2>
+    <p>Salin dan tempelkan data produk di bawah ini. Anda bisa menempelkan satu objek produk atau sebuah array (daftar) objek produk.</p>
+    <form id="addJsonForm">
+        <div class="form-group">
+            <textarea id="jsonInput" placeholder='Contoh format: &#10;{ "name": "Nama Parfum", "category": "Pria", "notes": "notes", "personality": "karakteristik", "description": "deskripsi", "idealFor": "ideal", "enhances": "memancarkan", "value": "nama-parfum" }&#10;&#10;Atau untuk beberapa produk:&#10;[&#10; { "name": "Parfum A", ... },&#10; { "name": "Parfum B", ... }&#10;]&#10;' required></textarea>
+        </div>
+        <button type="submit">Tambah Produk via JSON</button>
+    </form>
+</div>
+
+<script>
+    const accessCode = "12345";
+    const userCode = prompt("Masukkan kode akses:");
+
+    if (userCode !== accessCode) {
+        alert("Kode akses salah. Anda tidak memiliki izin.");
+        window.location.href = "katalog.html";
+    }
+
+    function createSlug(text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[^\w-]+/g, '')
+            .replace(/--+/g, '-')
+            .replace(/^-+/, '')
+            .replace(/-+$/, '');
+    }
+
+    // Handle form input manual
+    document.getElementById('addProductForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const newProduct = {
+            name: document.getElementById('productName').value,
+            category: document.getElementById('productCategory').value,
+            notes: document.getElementById('productNotes').value,
+            personality: document.getElementById('productPersonality').value,
+            description: document.getElementById('productDescription').value,
+            idealFor: document.getElementById('productIdealFor').value,
+            enhances: document.getElementById('productEnhances').value,
+            value: createSlug(document.getElementById('productName').value)
+        };
+
+        let storedProducts = JSON.parse(localStorage.getItem('addedProducts')) || [];
+        storedProducts.push(newProduct);
+        localStorage.setItem('addedProducts', JSON.stringify(storedProducts));
+
+        alert('Produk baru berhasil ditambahkan!');
+        this.reset();
+    });
+
+    // Handle form input JSON
+    document.getElementById('addJsonForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const jsonInput = document.getElementById('jsonInput').value;
+        try {
+            const newProducts = JSON.parse(jsonInput);
+            let storedProducts = JSON.parse(localStorage.getItem('addedProducts')) || [];
+
+            if (Array.isArray(newProducts)) {
+                // Jika inputnya adalah array, tambahkan semua produk dari array
+                newProducts.forEach(product => {
+                    if (!product.value) {
+                        product.value = createSlug(product.name);
+                    }
+                    storedProducts.push(product);
+                });
+                alert(`${newProducts.length} produk baru berhasil ditambahkan!`);
+            } else if (typeof newProducts === 'object' && newProducts !== null) {
+                // Jika inputnya adalah objek tunggal, tambahkan satu produk
+                if (!newProducts.value) {
+                    newProducts.value = createSlug(newProducts.name);
+                }
+                storedProducts.push(newProducts);
+                alert('Produk baru berhasil ditambahkan!');
+            } else {
+                alert('Format JSON tidak valid. Mohon periksa kembali.');
+                return;
+            }
+            
+            localStorage.setItem('addedProducts', JSON.stringify(storedProducts));
+            this.reset();
+        } catch (e) {
+            alert('Terjadi kesalahan saat memproses JSON. Pastikan formatnya benar.');
+            console.error(e);
+        }
+    });
+</script>
+</body>
+</html>
