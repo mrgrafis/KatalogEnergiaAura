@@ -6,7 +6,7 @@
     <title>Pesan Parfum - Aura Perfumery</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Definisi Variabel Warna (Sama seperti index.html) --- */
+        /* --- Definisi Variabel Warna --- */
         :root {
             --color-primary: #000000; /* Hitam */
             --color-secondary: #DAA520; /* Emas */
@@ -27,14 +27,14 @@
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--color-background); /* Menggunakan variabel warna untuk konsistensi */
+            background-color: var(--color-background);
             color: var(--color-text-dark);
             line-height: 1.6;
             scroll-behavior: smooth;
-            overflow-x: hidden; /* Tambahkan ini agar tidak ada scrollbar horizontal yang tidak diinginkan */
+            overflow-x: hidden; /* Mencegah scrollbar horizontal yang tidak diinginkan */
         }
 
-        /* --- Header Styles (DIAMBIL DARI index.html) --- */
+        /* --- Header Styles --- */
         header {
             background-color: var(--color-primary);
             color: var(--color-tertiary);
@@ -50,16 +50,22 @@
             top: 17px;
             left: 60px;
             z-index: 11;
+            width: 135px; /* Lebar tetap untuk container logo di desktop */
+            height: 135px; /* Tinggi tetap untuk container logo di desktop */
         }
 
         .logo-container img {
-            height: 135px;
-            width: auto;
+            max-width: 100%; /* Gambar tidak melebihi lebar container */
+            max-height: 100%; /* Gambar tidak melebihi tinggi container */
+            width: auto; /* Jaga rasio aspek */
+            height: auto; /* Jaga rasio aspek */
+            display: block; /* Menghilangkan spasi bawah */
+            object-fit: contain; /* Memastikan gambar pas tanpa terpotong/distorsi */
             border-radius: 5px;
         }
 
         header h1 {
-            font-family: 'Merriweather', serif; /* Font judul utama yang kuat */
+            font-family: 'Merriweather', serif;
             font-size: 3.5em;
             margin: 0;
             letter-spacing: 2px;
@@ -67,14 +73,14 @@
             text-transform: uppercase;
         }
 
-        /* --- Navigasi Styles (DIAMBIL DARI index.html) --- */
+        /* --- Navigasi Styles --- */
         nav {
             background-color: var(--color-primary);
             padding: 15px 0;
             text-align: center;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Izinkan wrap pada layar kecil */
             border-top: 1px solid var(--color-secondary);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
@@ -97,58 +103,58 @@
             color: var(--color-primary);
         }
 
-        /* --- Social Links Above Form Styles --- */
+        /* --- Social Links Above Form Styles (untuk di atas formulir) --- */
         .social-links-above-form {
-            text-align: center; /* Pusatkan elemen di dalam div */
+            text-align: center;
             margin: 30px auto 20px auto; /* Jarak atas, tengah horizontal, jarak bawah ke formulir */
             max-width: 960px; /* Sesuaikan dengan lebar container utama */
-            display: flex; /* Mengatur logo secara horizontal */
-            justify-content: center; /* Pusatkan logo di flex container */
+            display: flex;
+            justify-content: center;
             gap: 30px; /* Jarak antar logo yang lebih lebar */
         }
 
         .social-links-above-form a img {
             height: 60px; /* Ukuran tinggi logo yang lebih besar */
             width: auto; /* Lebar otomatis sesuai rasio */
-            transition: transform 0.3s ease; /* Efek transisi saat hover */
-            border-radius: 10px; /* Sedikit rounded corner untuk estetika */
+            transition: transform 0.3s ease;
+            border-radius: 10px;
         }
 
         .social-links-above-form a img:hover {
-            transform: scale(1.1); /* Logo sedikit membesar saat di-hover */
+            transform: scale(1.1);
         }
 
-        /* --- Main Content Container (Disatukan dengan styling form) --- */
+        /* --- Main Content Container --- */
         .container {
-            max-width: 960px; /* Lebar container form disamakan dengan konteks sebelumnya */
-            margin: 30px auto; /* Jarak atas/bawah disamakan dengan index.html */
+            max-width: 960px;
+            margin: 30px auto;
             padding: 30px;
-            background-color: var(--color-tertiary); /* Latar belakang container putih */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow lebih umum */
+            background-color: var(--color-tertiary);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            color: var(--color-text-dark); /* Teks gelap di container putih */
+            color: var(--color-text-dark);
         }
 
         /* --- Formulir Pemesanan (Order Form) Styles --- */
         #order-form {
-            background-color: var(--color-dark-grey-bg); /* Latar belakang form hitam */
+            background-color: var(--color-dark-grey-bg);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             text-align: center;
-            color: var(--color-text-light); /* Teks di form menjadi putih */
+            color: var(--color-text-light);
         }
 
         #order-form h2 {
             font-family: 'Merriweather', serif;
-            color: var(--color-secondary); /* Judul form menjadi Emas */
+            color: var(--color-secondary);
             margin-bottom: 20px;
         }
 
         #order-form p {
-            font-size: 1.1em;
+            font-size: 1.1em; /* Ukuran default paragraf */
             margin-bottom: 25px;
-            color: var(--color-text-light); /* Teks paragraf di form menjadi putih */
+            color: var(--color-text-light);
         }
 
         #order-form form {
@@ -165,22 +171,31 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: var(--color-text-light); /* Label menjadi putih */
+            color: var(--color-text-light);
         }
 
         #order-form input[type="text"],
         #order-form input[type="tel"],
-        #order-form input[type="number"],
+        #order-form input[type="date"], /* Tambahkan styling untuk input type="date" */
         #order-form select,
         #order-form textarea {
-            width: calc(100% - 22px);
+            width: calc(100% - 22px); /* 100% lebar dikurangi padding */
             padding: 10px;
             border: 1px solid var(--color-light-border);
             border-radius: 5px;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Pastikan padding masuk hitungan width */
             font-size: 1em;
             color: var(--color-tertiary);
             background-color: var(--color-primary);
+            /* Styling khusus untuk input date */
+            -webkit-appearance: none; /* Menghilangkan styling default di Webkit/Chrome */
+            -moz-appearance: none;    /* Menghilangkan styling default di Firefox */
+            appearance: none;         /* Menghilangkan styling default di browser lain */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="%23DAA520"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>'); /* Icon kalender */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            cursor: pointer;
         }
 
         /* Placeholder styling */
@@ -222,7 +237,7 @@
             color: var(--color-tertiary);
         }
 
-        /* --- Footer Styles (Sama seperti index.html) --- */
+        /* --- Footer Styles --- */
         footer {
             background-color: var(--color-primary);
             color: var(--color-text-light);
@@ -232,81 +247,146 @@
             font-size: 0.9em;
         }
 
-        /* --- Responsive Design (DIAMBIL DARI index.html dan disesuaikan) --- */
+        /* --- Responsive Design --- */
+
+        /* Untuk layar tablet dan desktop kecil (max-width: 768px) */
         @media (max-width: 768px) {
+            header {
+                padding: 30px 0;
+            }
             header h1 {
                 font-size: 2.5em;
+                margin-left: 100px;
+                text-align: left;
             }
             .logo-container {
-                top: 10px;
-                left: 10px;
+                top: 15px;
+                left: 15px;
+                width: 70px;
+                height: 70px;
             }
             .logo-container img {
-                height: 60px;
+                border-radius: 3px;
+            }
+
+            nav {
+                padding: 10px 0;
             }
             nav a {
                 padding: 8px 15px;
                 margin: 0 5px;
+                font-size: 1em;
             }
+
             .social-links-above-form {
-                gap: 20px; /* Kurangi jarak antar logo di tablet */
+                margin: 20px auto 15px auto;
+                gap: 20px;
             }
             .social-links-above-form a img {
-                height: 50px; /* Sesuaikan ukuran logo di layar tablet */
+                height: 50px;
             }
+
             .container {
                 width: 95%;
                 padding: 20px;
+                margin-top: 20px;
             }
-            h2 {
+            #order-form h2 {
                 font-size: 2em;
+            }
+            #order-form p {
+                font-size: 1em;
+            }
+            #order-form input[type="text"],
+            #order-form input[type="tel"],
+            #order-form input[type="date"], /* Sesuaikan juga untuk type="date" */
+            #order-form select,
+            #order-form textarea {
+                font-size: 0.95em;
+            }
+            #order-form button[type="submit"] {
+                padding: 10px 20px;
+                font-size: 1em;
             }
         }
 
+        /* Untuk layar ponsel (max-width: 480px) */
         @media (max-width: 480px) {
+            header {
+                padding: 20px 0;
+            }
             header h1 {
-                font-size: 2em;
+                font-size: 1.8em;
+                margin-left: 90px;
+            }
+            .logo-container {
+                top: 10px;
+                left: 10px;
+                width: 50px;
+                height: 50px;
             }
             nav {
                 flex-direction: column;
+                padding: 10px;
             }
             nav a {
-                margin: 5px 0;
-                width: 80%;
+                margin: 5px auto;
+                width: 90%;
+                font-size: 0.95em;
             }
             .social-links-above-form {
-                gap: 15px; /* Kurangi lagi jarak antar logo di ponsel */
-                margin: 20px auto 15px auto; /* Kurangi margin di ponsel */
+                margin: 15px auto 10px auto;
+                gap: 15px;
             }
             .social-links-above-form a img {
-                height: 45px; /* Sesuaikan ukuran logo di layar ponsel */
+                height: 40px;
+            }
+            .container {
+                width: 98%;
+                padding: 15px;
+                margin-top: 15px;
+            }
+            #order-form h2 {
+                font-size: 1.8em;
+            }
+            #order-form p {
+                font-size: 0.9em;
+            }
+            #order-form input[type="text"],
+            #order-form input[type="tel"],
+            #order-form input[type="date"], /* Sesuaikan juga untuk type="date" */
+            #order-form select,
+            #order-form textarea {
+                padding: 8px;
+                font-size: 0.9em;
+            }
+            #order-form button[type="submit"] {
+                padding: 10px 15px;
+                font-size: 0.95em;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Energia Aura Parfume</h1>
+                <h1>Energia Aura Parfume</h1>
     </header>
 
     <nav>
         <a href="index.html">Beranda</a>
         <a href="katalog.html">Katalog</a>
         <a href="pemesanan.html" class="active-nav">Pesan Sekarang</a>
+	<a href="index.html#contact">Kontak</a>
     </nav>
 
     <main>
         <div class="social-links-above-form">
-            <a href="https://shopee.co.id/manjait_sticker" target="_blank" aria-label="Kunjungi Toko Shopee">
-                <img src="https://iili.io/FvVTzqF.png">
+		<p>(Klik = Untuk Pemesanan di Shopee ==>>>></p>
+            <a href="https://shopee.co.id/manjait_shop" target="_blank" aria-label="Kunjungi Toko Shopee">
+                <img src="https://i.pinimg.com/736x/77/7d/c8/777dc8f47b66af05caff4015d5f416d8.jpg" alt="Logo Shopee">
             </a>
-            <a href="URL_TOKO_TOKOPEDIA_ANDA" target="_blank" aria-label="Kunjungi Toko Tokopedia">
-                <img src="https://iili.io/FvVTQB1.png">
-            </a>
-            <a href="URL_AKUN_TIKTOK_ANDA" target="_blank" aria-label="Kunjungi Akun TikTok">
-                <img src="https://iili.io/FvVIifn.png">
-            </a>
-        </div>
+		<p><<<<== Klik = Untuk Pemesanan di Shopee)</p>
+                    </div>
         <div class="container">
             <div id="order-form">
                 <h2>Formulir Pemesanan</h2>
@@ -317,20 +397,20 @@
                         <label for="nama">Nama Lengkap:</label>
                         <input type="text" id="nama" name="nama" placeholder="Contoh: Andreas Budi" required>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="tanggalLahir">Tanggal Lahir (Opsional):</label>
-                    <input type="date" id="tanggalLahir" name="tanggalLahir">
-                    </div>
-                    
+
                     <div class="form-group">
                         <label for="telepon">Nomor Telepon (WhatsApp):</label>
                         <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 081234567890" required>
                     </div>
 
                     <div class="form-group">
+                        <label for="tanggalLahir">Tanggal Lahir (Opsional):</label>
+                        <input type="date" id="tanggalLahir" name="tanggalLahir">
+                    </div>
+
+                    <div class="form-group">
                         <label for="alamat">Alamat Lengkap:</label>
-                        <textarea id="alamat" name="alamat" rows="6" placeholder="Contoh : nama jalan, nomor rumah, RT/RW, kelurahan/desa, kecamatan, kota/kabupaten, provinsi, dan kode pos" required></textarea>
+                        <textarea id="alamat" name="alamat" rows="4" placeholder="Contoh : nama jalan, nomor rumah, RT/RW, kelurahan/desa, kecamatan, kota/kabupaten, provinsi, dan kode pos" required></textarea>
                     </div>
 
                     <div class="form-group">
@@ -356,13 +436,19 @@
 
                     <div class="form-group">
                         <label for="ukuran">Ukuran (ml):</label>
-                        <input type="number" id="ukuran" name="ukuran" min="10" max="100" placeholder="Contoh: 30, 50, 100 (untuk yng memesan Diatas 30ml. bisa chat dulu Harga)" required>
+                        <select id="ukuran" name="ukuran" required>
+                            <option value="">-- Pilih Ukuran --</option>
+                            <option value="30">35 ml (Tersedia)</option>
+                            <option value="50">50 ml (Pemesanan)</option>
+                            <option value="100">100 ml (Pemesanan)</option>
+                        </select>
                     </div>
+
                     <div class="form-group">
-                        <label for="keterangan">Ungkapkan Keinginan Anda (optional):</label>
-                        <textarea id="keterangan" name="keterangan" rows="10" placeholder="Contoh : Saya ingin parfum ini membantu meningkatkan karisma dan daya tarik saya dalam pekerjaan, Lawan Jenis, serta memberikan energi positif setiap hari. Atau, saya ingin parfum ini mendukung fokus dan ketenangan batin saya" required></textarea>
+                        <label for="keinginan">Ungkapkan Keinginan Anda (Optional):</label>
+                        <textarea id="keinginan" name="keinginan" rows="5" 
+                                  placeholder="Contoh: Saya ingin parfum ini membantu meningkatkan karisma dan daya tarik saya dalam pekerjaan, serta memberikan energi positif setiap hari. Atau, saya ingin parfum ini mendukung fokus dan ketenangan batin saya."></textarea>
                     </div>
-                  
 
                     <button type="submit">Pesan Sekarang</button>
                 </form>
@@ -380,1077 +466,1764 @@
             const searchParfumInput = document.getElementById('searchParfum');
             const parfumSelect = document.getElementById('parfum');
 
-            // Data parfum lengkap dengan kategori
+            // Data parfum lengkap dengan kategori (DIUPDATE DENGAN DATA DARI ANDA)
             const allPerfumes = [
-                // --- Parfum untuk Pria ---
-  { value: "abercrombie-fierce-confidence-man", text: "Abercrombie Fierce Confidence Man", category: "Pria" },
-  { value: "adidas-adventure-explorer", text: "Adidas Adventure Explorer", category: "Pria" },
-  { value: "adidas-deep-energi", text: "Adidas Deep Energi", category: "Pria" },
-  { value: "adidas-fair-play-special-2008", text: "Adidas Fair Play Special 2008", category: "Pria" },
-  { value: "adidas-pure-game", text: "Adidas Pure Game", category: "Pria" },
-  { value: "adidas-team-force", text: "Adidas Team Force", category: "Pria" },
-  { value: "aigner-black-man", text: "Aigner Black Man", category: "Pria" },
-  { value: "aigner-clear-day-man", text: "Aigner Clear Day Man", category: "Pria" },
-  { value: "aigner-evolution-man", text: "Aigner Evolution Man", category: "Pria" },
-  { value: "aigner-in-leather-man", text: "Aigner In Leather Man", category: "Pria" },
-  { value: "aigner-man-two", text: "Aigner Man Two", category: "Pria" },
-  { value: "aigner-no-1", text: "Aigner No 1", category: "Pria" },
-  { value: "aigner-no-1-sport", text: "Aigner No 1 Sport", category: "Pria" },
-  { value: "aigner-suede-edition-man", text: "Aigner Suede Edition Man", category: "Pria" },
-  { value: "aigner-white-man", text: "Aigner White Man", category: "Pria" },
-  { value: "aigner-x-limited", text: "Aigner X Limited", category: "Pria" },
-  { value: "angel-scheleser-man", text: "Angel Scheleser Man", category: "Pria" },
-  { value: "antonio-banderas-man", text: "Antonio Banderas Man", category: "Pria" },
-  { value: "armaf-club-de-nuit-intense-man", text: "Armaf Club de Nuit Intense Man", category: "Pria" },
-  { value: "azzaro-chrome", text: "Azzaro Chrome", category: "Pria" },
-  { value: "azzaro-desible", text: "Azzaro Desible", category: "Pria" },
-  { value: "azzaro-the-most-wanted", text: "Azzaro The Most Wanted", category: "Pria" },
-  { value: "beneton-cold", text: "Beneton Cold", category: "Pria" },
-  { value: "beneton-sport", text: "Beneton Sport", category: "Pria" },
-  { value: "black-kennet-cole-man", text: "Black Kennet Cole Man", category: "Pria" },
-  { value: "body-shop-kistna", text: "Body Shop Kistna", category: "Pria" },
-  { value: "body-shop-white-musk-man", text: "Body Shop White Musk Man", category: "Pria" },
-  { value: "burberry-brit-for-man", text: "Burberry Brit for Man", category: "Pria" },
-  { value: "burberry-classic-man", text: "Burberry Classic Man", category: "Pria" },
-  { value: "burberry-london-for-man", text: "Burberry London For Man", category: "Pria" },
-  { value: "burberry-mr-burberry", text: "Burberry Mr Burberry", category: "Pria" },
-  { value: "burberry-summer-man", text: "Burberry Summer Man", category: "Pria" },
-  { value: "burberry-the-beat-for-man", text: "Burberry The Beat for Man", category: "Pria" },
-  { value: "burberry-weekend-man", text: "Burberry Weekend Man", category: "Pria" },
-  { value: "bvlgai-aqua", text: "Bvlgai Aqua", category: "Pria" },
-  { value: "bvlgai-aqua-amara", text: "Bvlgai Aqua Amara", category: "Pria" },
-  { value: "bvlgai-aqua-atlantique", text: "Bvlgai Aqua Atlantique", category: "Pria" },
-  { value: "bvlgai-aqua-marine", text: "Bvlgai Aqua Marine", category: "Pria" },
-  { value: "bvlgai-aqua-marine-tonic", text: "Bvlgai Aqua Marine Tonic", category: "Pria" },
-  { value: "bvlgai-black", text: "Bvlgai Black", category: "Pria" },
-  { value: "bvlgai-blv-man", text: "Bvlgai Blv Man", category: "Pria" },
-  { value: "bvlgai-blv-note-pour-home", text: "Bvlgai Blv Note Pour Home", category: "Pria" },
-  { value: "bvlgai-extreme", text: "Bvlgai Extreme", category: "Pria" },
-  { value: "bvlgai-man-2010", text: "Bvlgai Man 2010", category: "Pria" },
-  { value: "bvlgai-man-in-black", text: "Bvlgai Man in Black", category: "Pria" },
-  { value: "bvlgai-orient-man-in-black", text: "Bvlgai Orient Man in Black", category: "Pria" },
-  { value: "bvlgai-pour-homme-soir", text: "Bvlgai Pour Homme Soir", category: "Pria" },
-  { value: "bvlgai-rain-man-essense-man", text: "Bvlgai Rain Man Essense Man", category: "Pria" },
-  { value: "bvlgai-white-pour-homme", text: "Bvlgai White Pour Homme", category: "Pria" },
-  { value: "bvlgai-wood-essence", text: "Bvlgai Wood Essence", category: "Pria" },
-  { value: "ch-212-h2o-man", text: "CH 212 H2O Man", category: "Pria" },
-  { value: "ch-212-heroes-2021", text: "CH 212 Heroes 2021", category: "Pria" },
-  { value: "ch-212-heroes-forever", text: "CH 212 Heroes Forever", category: "Pria" },
-  { value: "ch-212-man", text: "CH 212 Man", category: "Pria" },
-  { value: "ch-212-sexy-man", text: "CH 212 Sexy Man", category: "Pria" },
-  { value: "ch-212-surf-man", text: "CH 212 Surf Man", category: "Pria" },
-  { value: "ch-212-vip-black-man", text: "CH 212 VIP Black Man", category: "Pria" },
-  { value: "ch-212-vip-black-own-the-party", text: "CH 212 VIP Black Own the Party", category: "Pria" },
-  { value: "ch-212-vip-man", text: "CH 212 VIP Man", category: "Pria" },
-  { value: "ch-212-vip-man-party-fever", text: "CH 212 VIP Man Party Fever", category: "Pria" },
-  { value: "ch-212-vip-wins-men", text: "CH 212 VIP Wins Men", category: "Pria" },
-  { value: "ch-212-wins-men", text: "CH 212 Wins Men", category: "Pria" },
-  { value: "ch-aqua-for-man", text: "CH Aqua for Man", category: "Pria" },
-  { value: "ch-bad-boy-extreme", text: "CH Bad Boy Extreme", category: "Pria" },
-  { value: "ch-bad-boy", text: "CH Bad Boy", category: "Pria" },
-  { value: "ch-chic-man", text: "CH Chic Man", category: "Pria" },
-  { value: "ch-kings", text: "CH Kings", category: "Pria" },
-  { value: "ch-man-sport", text: "CH Man Sport", category: "Pria" },
-  { value: "ch-marine", text: "CH Marine", category: "Pria" },
-  { value: "ch-sport-man", text: "CH Sport Man", category: "Pria" },
-  { value: "chanel-allure-home-sport-eau-extreme", text: "Chanel Allure Home Sport Eau Extreme", category: "Pria" },
-  { value: "chanel-allure-homme-sport", text: "Chanel Allure Homme Sport", category: "Pria" },
-  { value: "chanel-allure-man", text: "Chanel Allure Man", category: "Pria" },
-  { value: "chanel-bleu-de-chanel-edp", text: "Chanel Bleu de Chanel EDP", category: "Pria" },
-  { value: "chanel-blue", text: "Chanel Blue", category: "Pria" },
-  { value: "chopard-mobile-vetiver", text: "Chopard Mobile Vetiver", category: "Pria" },
-  { value: "chopart-miglia-1000", text: "Chopart Miglia 1000", category: "Pria" },
-  { value: "christian-audgier-villain", text: "Christian Audgier Villain", category: "Pria" },
-  { value: "christian-dior-fahrenheit", text: "Christian Dior Fahrenheit", category: "Pria" },
-  { value: "christian-dior-fahrenheit-absolute", text: "Christian Dior Fahrenheit Absolute", category: "Pria" },
-  { value: "christian-dior-higher", text: "Christian Dior Higher", category: "Pria" },
-  { value: "christian-dior-homme-intens", text: "Christian Dior Homme Intens", category: "Pria" },
-  { value: "christian-dior-homme-sport", text: "Christian Dior Homme Sport", category: "Pria" },
-  { value: "christian-dior-sauvage", text: "Christian Dior Sauvage", category: "Pria" },
-  { value: "christian-dior-sauvage-exilir", text: "Christian Dior Sauvage Exilir", category: "Pria" },
-  { value: "christian-ronaldo-legachy-sheer-seven", text: "Christian Ronaldo Legachy Sheer Seven", category: "Pria" },
-  { value: "cigar", text: "Cigar", category: "Pria" },
-  { value: "ck-crave-for-man", text: "CK Crave for Man", category: "Pria" },
-  { value: "ck-electric", text: "CK Electric", category: "Pria" },
-  { value: "ck-encounter-him", text: "CK Encounter Him", category: "Pria" },
-  { value: "ck-escape-for-man", text: "CK Escape for Man", category: "Pria" },
-  { value: "ck-eternity-air-male", text: "CK Eternity Air Male", category: "Pria" },
-  { value: "ck-eternity-annyversary-25-th-edition-man", text: "CK Eternity Annyversary 25 Th Edition Man", category: "Pria" },
-  { value: "ck-eternity-aqua", text: "CK Eternity Aqua", category: "Pria" },
-  { value: "ck-eternity-man", text: "CK Eternity Man", category: "Pria" },
-  { value: "ck-eternity-now-man", text: "CK Eternity Now Man", category: "Pria" },
-  { value: "ck-eternity-summer-2014-man", text: "CK Eternity Summer 2014 Man", category: "Pria" },
-  { value: "ck-euphoria-deep", text: "CK Euphoria Deep", category: "Pria" },
-  { value: "ck-euphoria-man", text: "CK Euphoria Man", category: "Pria" },
-  { value: "ck-free", text: "CK Free", category: "Pria" },
-  { value: "ck-free-blue", text: "CK Free Blue", category: "Pria" },
-  { value: "ck-in-2-u-heat-him", text: "CK In 2 U Heat Him", category: "Pria" },
-  { value: "ck-in-2-u-him", text: "CK In 2 U Him", category: "Pria" },
-  { value: "ck-obsession-man", text: "CK Obsession Man", category: "Pria" },
-  { value: "ck-one-shock-him", text: "CK One Shock Him", category: "Pria" },
-  { value: "coach-man-edp", text: "Coach Man EDP", category: "Pria" },
-  { value: "cr-7", text: "CR 7", category: "Pria" },
-  { value: "cr-7-legacy", text: "CR 7 Legacy", category: "Pria" },
-  { value: "creed-aventus", text: "Creed Aventus", category: "Pria" },
-  { value: "david-beckham-intimately-her", text: "David Beckham Intimately Her", category: "Pria" }, // Ini mungkin salah kategori sebelumnya, saya asumsikan ini untuk pria berdasarkan daftar lain atau koreksi. Jika ini wanita, beritahu saya.
-  { value: "davidoff-cool-water-games", text: "Davidoff Cool Water Games", category: "Pria" },
-  { value: "davidoff-cool-water-man", text: "Davidoff Cool Water Man", category: "Pria" },
-  { value: "davidoff-cool-water-reborn", text: "Davidoff Cool Water Reborn", category: "Pria" },
-  { value: "davidoff-cool-water-wave", text: "Davidoff Cool Water Wave", category: "Pria" },
-  { value: "davidoff-coolwater-night-dive-man", text: "Davidoff Coolwater Night Dive Man", category: "Pria" },
-  { value: "davidoff-hot-water-night", text: "Davidoff Hot Water Night", category: "Pria" },
-  { value: "davidoff-run-wild-edt", text: "Davidoff Run Wild EDT", category: "Pria" },
-  { value: "davidoff-run-wild-for-him", text: "Davidoff Run Wild For Him", category: "Pria" },
-  { value: "davidoff-silver-shadow", text: "Davidoff Silver Shadow", category: "Pria" },
-  { value: "de-marly-pegasus-parfume-for-man", text: "De Marly Pegasus Parfume for Man", category: "Pria" },
-  { value: "dear-boyfriend-aviator-black-suit", text: "Dear Boyfriend Aviator Black Suit", category: "Pria" },
-  { value: "diesel-bad-for-man", text: "Diesel Bad for Man", category: "Pria" },
-  { value: "diesel-only-the-brave", text: "Diesel Only the Brave", category: "Pria" },
-  { value: "diesel-only-the-brave-toto", text: "Diesel Only the Brave Toto", category: "Pria" },
-  { value: "dkny-be-delicious-man", text: "DKNY Be Delicious Man", category: "Pria" },
-  { value: "drakar-noir-guy-laroche", text: "Drakar Noir Guy Laroche", category: "Pria" },
-  { value: "dsquared2-green-wood-2019", text: "Dsquared2 Green Wood 2019", category: "Pria" },
-  { value: "dunhill-black", text: "Dunhill Black", category: "Pria" },
-  { value: "dunhill-blue", text: "Dunhill Blue", category: "Pria" },
-  { value: "dunhill-custom-man", text: "Dunhill Custom Man", category: "Pria" },
-  { value: "dunhill-fresh-man", text: "Dunhill Fresh Man", category: "Pria" },
-  { value: "dunhill-icon", text: "Dunhill Icon", category: "Pria" },
-  { value: "dunhill-london-man", text: "Dunhill London Man", category: "Pria" },
-  { value: "dunhill-pursuit", text: "Dunhill Pursuit", category: "Pria" },
-  { value: "dunhill-red", text: "Dunhill Red", category: "Pria" },
-  { value: "dunhill-signature-collection-british-leather", text: "Dunhill Signature Collection British Leather", category: "Pria" },
-  { value: "dunhill-x-centric", text: "Dunhill X Centric", category: "Pria" },
-  { value: "ermengildo-zegna-essence-florentine-iris", text: "Ermengildo Zegna Essence Florentine Iris", category: "Pria" },
-  { value: "esprit-life-male", text: "Esprit Life - Male", category: "Pria" },
-  { value: "escad-magnetism-man", text: "Escad Magnetism Man", category: "Pria" },
-  { value: "escad-moon-sparkle-man", text: "Escad Moon Sparkle Man", category: "Pria" },
-  { value: "escad-pour-home-sport", text: "Escad Pour Home Sport", category: "Pria" },
-  { value: "escad-sentimen-man", text: "Escad Sentimen Man", category: "Pria" },
-  { value: "estee-lauder-pleasure-man", text: "Estee Lauder Pleasure Man", category: "Pria" },
-  { value: "ferrari-black", text: "Ferrari Black", category: "Pria" },
-  { value: "ferrari-black-new", text: "Ferrari Black New", category: "Pria" },
-  { value: "ferrari-black-shine", text: "Ferrari Black Shine", category: "Pria" },
-  { value: "ferrari-leather-essence-man", text: "Ferrari Leather Essence Man", category: "Pria" },
-  { value: "ferrari-red", text: "Ferrari Red", category: "Pria" },
-  { value: "ferrari-scuderia-forte-2017", text: "Ferrari Scuderia Forte 2017", category: "Pria" },
-  { value: "ferrari-scuderia", text: "Ferrari Scuderia", category: "Pria" },
-  { value: "giorgio-armani-aqua-digio-essenza", text: "Giorgio Armani Aqua Digio Essenza", category: "Pria" },
-  { value: "giorgio-armani-aqua-digio", text: "Giorgio Armani Aqua Digio", category: "Pria" },
-  { value: "giorgio-armani-aquadigio-absolute", text: "Giorgio Armani Aquadigio Absolute", category: "Pria" },
-  { value: "giorgio-armani-aquadigio-fraich", text: "Giorgio Armani Aquadigio Fraich", category: "Pria" },
-  { value: "giorgio-armani-aquadigio-man", text: "Giorgio Armani Aquadigio Man", category: "Pria" },
-  { value: "giorgio-armani-aquadigio-profondo-man", text: "Giorgio Armani Aquadigio Profondo Man", category: "Pria" },
-  { value: "giorgio-armani-attitude", text: "Giorgio Armani Attitude", category: "Pria" },
-  { value: "giorgio-armani-basi-in-blue-man", text: "Giorgio Armani Basi in Blue Man", category: "Pria" },
-  { value: "giorgio-armani-black-code", text: "Giorgio Armani Black Code", category: "Pria" },
-  { value: "giorgio-armani-city-glam-man", text: "Giorgio Armani City Glam Man", category: "Pria" },
-  { value: "giorgio-armani-code-profumo", text: "Giorgio Armani Code Profumo", category: "Pria" },
-  { value: "giorgio-armani-code-sport", text: "Giorgio Armani Code Sport", category: "Pria" },
-  { value: "giorgio-armani-code-summer-2010-pour-homme", text: "Giorgio Armani Code Summer 2010 Pour Homme", category: "Pria" },
-  { value: "giorgio-armani-emporio-white-for-men", text: "Giorgio Armani Emporio White For Men", category: "Pria" },
-  { value: "giorgio-armani-mania-man", text: "Giorgio Armani Mania Man", category: "Pria" },
-  { value: "giorgio-armani-my-way-man", text: "Giorgio Armani My Way Man", category: "Pria" },
-  { value: "giorgio-armani-sensi-man", text: "Giorgio Armani Sensi Man", category: "Pria" },
-  { value: "givenchy-gentleman-edp-reserve-pri", text: "Givenchy Gentleman EDP Reserve Pri", category: "Pria" },
-  { value: "givenchy-gentleman-society", text: "Givenchy Gentleman Society", category: "Pria" },
-  { value: "givenchy-gentleman", text: "Givenchy Gentleman", category: "Pria" },
-  { value: "green-wood", text: "Green Wood", category: "Pria" },
-  { value: "gucci-guilty-black-man", text: "Gucci Guilty Black Man", category: "Pria" },
-  { value: "gucci-guilty-pour-homme-2022", text: "Gucci Guilty Pour Homme 2022", category: "Pria" },
-  { value: "gucci-rush-man", text: "Gucci Rush Man", category: "Pria" },
-  { value: "gucci-sport-man", text: "Gucci Sport Man", category: "Pria" },
-  { value: "guess-man", text: "Guess Man", category: "Pria" },
-  { value: "guess-seductive-noir-male", text: "Guess Seductive Noir Male", category: "Pria" },
-  { value: "hermes-h24-for-men", text: "Hermes H24 For Men", category: "Pria" },
-  { value: "honor-amoug-man", text: "Honor Amoug Man", category: "Pria" },
-  { value: "hugo-boss-army-man", text: "Hugo Boss Army Man", category: "Pria" },
-  { value: "hugo-boss-bottle", text: "Hugo Boss Bottle", category: "Pria" },
-  { value: "hugo-boss-bottle-night", text: "Hugo Boss Bottle Night", category: "Pria" },
-  { value: "hugo-boss-bottle-tonic", text: "Hugo Boss Bottle Tonic", category: "Pria" },
-  { value: "hugo-boss-bottled", text: "Hugo Boss Bottled", category: "Pria" },
-  { value: "hugo-boss-bottled-infinite", text: "Hugo Boss Bottled Infinite", category: "Pria" },
-  { value: "hugo-boss-bottled-oud", text: "Hugo Boss Bottled Oud", category: "Pria" },
-  { value: "hugo-boss-dark-blue", text: "Hugo Boss Dark Blue", category: "Pria" },
-  { value: "hugo-boss-elements", text: "Hugo Boss Elements", category: "Pria" },
-  { value: "hugo-boss-energize", text: "Hugo Boss Energize", category: "Pria" },
-  { value: "hugo-boss-extreme", text: "Hugo Boss Extreme", category: "Pria" },
-  { value: "hugo-boss-iced", text: "Hugo Boss Iced", category: "Pria" },
-  { value: "hugo-boss-in-motion", text: "Hugo Boss In Motion", category: "Pria" },
-  { value: "hugo-boss-in-motion-black", text: "Hugo Boss In Motion Black", category: "Pria" },
-  { value: "hugo-boss-in-motion-blue", text: "Hugo Boss In Motion Blue", category: "Pria" },
-  { value: "hugo-boss-in-motion-electric", text: "Hugo Boss In Motion Electric", category: "Pria" },
-  { value: "hugo-boss-in-motion-green", text: "Hugo Boss In Motion Green", category: "Pria" },
-  { value: "hugo-boss-in-motion-iv", text: "Hugo Boss In Motion IV", category: "Pria" },
-  { value: "hugo-boss-now", text: "Hugo Boss Now", category: "Pria" },
-  { value: "hugo-boss-orange-man", text: "Hugo Boss Orange Man", category: "Pria" },
-  { value: "hugo-boss-pure", text: "Hugo Boss Pure", category: "Pria" },
-  { value: "hugo-boss-red-man", text: "Hugo Boss Red Man", category: "Pria" },
-  { value: "hugo-boss-selection", text: "Hugo Boss Selection", category: "Pria" },
-  { value: "hugo-boss-soul", text: "Hugo Boss Soul", category: "Pria" },
-  { value: "hugo-boss-strong", text: "Hugo Boss Strong", category: "Pria" },
-  { value: "hugo-boss-the-scent-for-him-magnetic", text: "Hugo Boss The Scent For Him Magnetic", category: "Pria" },
-  { value: "hugo-boss-the-scent-intense-man", text: "Hugo Boss The Scent Intense Man", category: "Pria" },
-  { value: "hugo-boss-the-scent-man", text: "Hugo Boss The Scent Man", category: "Pria" },
-  { value: "hugo-boss-the-scent-prive-accord", text: "Hugo Boss The Scent Prive Accord", category: "Pria" },
-  { value: "hugo-boss-urban-journey-2018", text: "Hugo Boss Urban Journey 2018", category: "Pria" },
-  { value: "hugo-boss-xy-for-him", text: "Hugo Boss Xy For Him", category: "Pria" },
-  { value: "ice-mint", text: "Ice Mint", category: "Pria" },
-  { value: "iron-man-pure-sport", text: "Iron Man Pure Sport", category: "Pria" },
-  { value: "issey-miyake-man", text: "Issey Miyake Man", category: "Pria" },
-  { value: "issey-miyake-fusion-dissey", text: "Issey Miyake Fusion D'issey", category: "Pria" },
-  { value: "issey-miyake-leau-bleu-man", text: "Issey Miyake L'Eau Bleu Man", category: "Pria" },
-  { value: "issey-miyake-leau-de-issey-pour-homme", text: "Issey Miyake L'Eau De Issey Pour Homme", category: "Pria" },
-  { value: "joop-man", text: "Joop Man", category: "Pria" },
-  { value: "jpg-2-gaultier", text: "JPG 2 Gaultier", category: "Pria" },
-  { value: "jpg-le-male-elixir-for-man", text: "JPG Le Male Elixir For Man", category: "Pria" },
-  { value: "jpg-le-male-essence-man", text: "JPG Le Male Essence Man", category: "Pria" },
-  { value: "jpg-lemal-summer-2010", text: "JPG Lemal Summer 2010", category: "Pria" },
-  { value: "jpg-man", text: "JPG Man", category: "Pria" },
-  { value: "jpg-scandal-pour-homme", text: "JPG Scandal Pour Homme", category: "Pria" },
-  { value: "jpg-ultra-male", text: "JPG Ultra Male", category: "Pria" },
-  { value: "kenzo-for-man", text: "Kenzo For Man", category: "Pria" },
-  { value: "kenzo-leau-2-kenzo-pour-homme", text: "Kenzo L'Eau 2 Kenzo Pour Homme", category: "Pria" },
-  { value: "kenzo-leaupar-man", text: "Kenzo L'Eaupar Man", category: "Pria" },
-  { value: "kenzo-man-2010", text: "Kenzo Man 2010", category: "Pria" },
-  { value: "kopiku", text: "Kopiku", category: "Pria" },
-  { value: "lacoste-challenge", text: "Lacoste Challenge", category: "Pria" },
-  { value: "lacoste-cool-play", text: "Lacoste Cool Play", category: "Pria" },
-  { value: "lacoste-ellegance-man", text: "Lacoste Ellegance Man", category: "Pria" },
-  { value: "lacoste-essential", text: "Lacoste Essential", category: "Pria" },
-  { value: "lacoste-essential-sport", text: "Lacoste Essential Sport", category: "Pria" },
-  { value: "lacoste-hot-play", text: "Lacoste Hot Play", category: "Pria" },
-  { value: "lacoste-l12-green", text: "Lacoste L12 Green", category: "Pria" },
-  { value: "lacoste-l12-noir", text: "Lacoste L12 Noir", category: "Pria" },
-  { value: "lacoste-magnetic-man", text: "Lacoste Magnetic Man", category: "Pria" },
-  { value: "lacoste-match-point-man", text: "Lacoste Match Point Man", category: "Pria" },
-  { value: "lamborgini", text: "Lamborgini", category: "Pria" },
-  { value: "lancome-miracle-man", text: "Lancome Miracle Man", category: "Pria" },
-  { value: "lattafa-asad-edp-2021", text: "Lattafa Asad EDP 2021", category: "Pria" },
-  { value: "leonel-messi-man", text: "Leonel Messi Man", category: "Pria" },
-  { value: "loewe-man", text: "Loewe Man", category: "Pria" },
-  { value: "loewe-solo-absoluto", text: "Loewe Solo Absoluto", category: "Pria" },
-  { value: "loewe-solo-intense", text: "Loewe Solo Intense", category: "Pria" },
-  { value: "louis-vuiton-orage-man", text: "Louis Vuiton Orage Man", category: "Pria" },
-  { value: "maison-margiela-jazz-club-man", text: "Maison Margiela Jazz Club Man", category: "Pria" },
-  { value: "manchester-united", text: "Manchester United", category: "Pria" },
-  { value: "mercedes-bens-club-black-man", text: "Mercedes Bens Club Black Man", category: "Pria" },
-  { value: "mercedes-sign", text: "Mercedes Sign", category: "Pria" },
-  { value: "mercedez-benz-cologne-man", text: "Mercedez Benz Cologne Man", category: "Pria" },
-  { value: "mercedez-benz-sport-man", text: "Mercedez Benz Sport Man", category: "Pria" },
-  { value: "mission-pour-homme", text: "Mission Pour Homme", category: "Pria" },
-  { value: "mont-blanc-emblem", text: "Mont Blanc Emblem", category: "Pria" },
-  { value: "mont-blanc-explore", text: "Mont Blanc Explore", category: "Pria" },
-  { value: "mont-blanc-individual-man", text: "Mont Blanc Individual Man", category: "Pria" },
-  { value: "mont-blanc-legend", text: "Mont Blanc Legend", category: "Pria" },
-  { value: "mont-blanc-legend-man", text: "Mont Blanc Legend Man", category: "Pria" },
-  { value: "mont-blanc-legend-night", text: "Mont Blanc Legend Night", category: "Pria" },
-  { value: "mont-blanc-legend-red", text: "Mont Blanc Legend Red", category: "Pria" },
-  { value: "mont-blanc-legend-spirit", text: "Mont Blanc Legend Spirit", category: "Pria" },
-  { value: "mont-blanc-starwalker", text: "Mont Blanc Starwalker", category: "Pria" },
-  { value: "montblanc-explore-platinum", text: "Montblanc Explore Platinum", category: "Pria" },
-  { value: "moschino-toy-boy-man", text: "Moschino Toy Boy Man", category: "Pria" },
-  { value: "mr-burberry-element-for-man", text: "Mr Burberry Element For Man", category: "Pria" },
-  { value: "nautica-ocean", text: "Nautica Ocean", category: "Pria" },
-  { value: "oriflame-ascendant-masculine", text: "Oriflame Ascendant Masculine", category: "Pria" },
-  { value: "oriflame-giordani-gold-masculine", text: "Oriflame Giordani Gold Masculine", category: "Pria" },
-  { value: "oriflame-glacier-air-masculine", text: "Oriflame Glacier Air Masculine", category: "Pria" },
-  { value: "oriflame-nordic-waters-masculine", text: "Oriflame Nordic Waters Masculine", category: "Pria" },
-  { value: "oriflame-signature-generation-masculine", text: "Oriflame Signature Generation Masculine", category: "Pria" },
-  { value: "paco-damour-man", text: "Paco D'Amour Man", category: "Pria" },
-  { value: "paco-rabanne-invictus", text: "Paco Rabanne Invictus", category: "Pria" },
-  { value: "paco-rabanne-invictus-aqua", text: "Paco Rabanne Invictus Aqua", category: "Pria" },
-  { value: "paco-rabanne-invictus-legend", text: "Paco Rabanne Invictus Legend", category: "Pria" },
-  { value: "paco-rabanne-invictus-parfum", text: "Paco Rabanne Invictus Parfum", category: "Pria" },
-  { value: "paco-rabanne-invictus-victory-2021", text: "Paco Rabanne Invictus Victory 2021", category: "Pria" },
-  { value: "paco-rabanne-invictus-victory-elixir", text: "Paco Rabanne Invictus Victory Elixir", category: "Pria" },
-  { value: "paco-rabanne-million-dollar-man", text: "Paco Rabanne Million Dollar Man", category: "Pria" },
-  { value: "paco-rabanne-one-million", text: "Paco Rabanne One Million", category: "Pria" },
-  { value: "paco-rabanne-one-million-lucky", text: "Paco Rabanne One Million Lucky", category: "Pria" },
-  { value: "paco-rabanne-one-million-prive", text: "Paco Rabanne One Million Prive", category: "Pria" },
-  { value: "paco-rabanne-phantom-man", text: "Paco Rabanne Phantom Man", category: "Pria" },
-  { value: "paco-rabanne-pure-xs-man", text: "Paco Rabanne Pure XS Man", category: "Pria" },
-  { value: "paco-rabanne-ultraviolet-man", text: "Paco Rabanne Ultraviolet Man", category: "Pria" },
-  { value: "pacorabanne-pure-xs-by-night", text: "Pacorabanne Pure XS By Night", category: "Pria" },
-  { value: "paris-hilton-just-me-man", text: "Paris Hilton Just Me Man", category: "Pria" },
-  { value: "pheromone-1-man-bvlgari-aqua-man", text: "Pheromone 1 Man Bvlgari Aqua Man", category: "Pria" },
-  { value: "pheromone-2-man-davidoff-cool-water-man", text: "Pheromone 2 Man Davidoff Cool Water Man", category: "Pria" },
-  { value: "pheromone-3-man-creed-aventus", text: "Pheromone 3 Man Creed Aventus", category: "Pria" },
-  { value: "pheromone-3-man-dior-sauvage-man", text: "Pheromone 3 Man Dior Sauvage Man", category: "Pria" },
-  { value: "police-the-sinner-man", text: "Police The Sinner Man", category: "Pria" },
-  { value: "police-to-be-king", text: "Police To Be King", category: "Pria" },
-  { value: "police-to-be-man", text: "Police To Be Man", category: "Pria" },
-  { value: "prada-infusion-homm", text: "Prada Infusion Homm", category: "Pria" },
-  { value: "prada-lhomme", text: "Prada L'Homme", category: "Pria" },
-  { value: "prada-lhomme-water-splash", text: "Prada L'Homme Water Splash", category: "Pria" },
-  { value: "ralph-lauren-polo-black", text: "Ralph Lauren Polo Black", category: "Pria" },
-  { value: "ralph-lauren-polo-blue", text: "Ralph Lauren Polo Blue", category: "Pria" },
-  { value: "ralph-lauren-polo-double-black", text: "Ralph Lauren Polo Double Black", category: "Pria" },
-  { value: "ralph-lauren-polo-explore", text: "Ralph Lauren Polo Explore", category: "Pria" },
-  { value: "ralph-lauren-polo-green", text: "Ralph Lauren Polo Green", category: "Pria" },
-  { value: "ralph-lauren-polo-red", text: "Ralph Lauren Polo Red", category: "Pria" },
-  { value: "ralph-lauren-polo-red-rush-edt", text: "Ralph Lauren Polo Red Rush EDT", category: "Pria" },
-  { value: "ralph-lauren-polo-red-white-blue", text: "Ralph Lauren Polo Red White Blue", category: "Pria" },
-  { value: "ralph-lauren-polo-safari", text: "Ralph Lauren Polo Safari", category: "Pria" },
-  { value: "ralph-lauren-polo-sport", text: "Ralph Lauren Polo Sport", category: "Pria" },
-  { value: "ralph-lauren-polo-ultra-blue", text: "Ralph Lauren Polo Ultra Blue", category: "Pria" },
-  { value: "ralph-lauren-romance-silver", text: "Ralph Lauren Romance Silver", category: "Pria" },
-  { value: "roberto-cavalli-uomo", text: "Roberto Cavalli Uomo", category: "Pria" },
-  { value: "roja-dove-elysium-cologne-pour-home-man", text: "Roja Dove Elysium Cologne Pour Home Man", category: "Pria" },
-  { value: "saint-t-dupont-pasanger", text: "Saint T Dupont Pasanger", category: "Pria" },
-  { value: "salvatore-feragamo-man", text: "Salvatore Feragamo Man", category: "Pria" },
-  { value: "salvatore-feragamo-free-time", text: "Salvatore Feragamo Free Time", category: "Pria" },
-  { value: "salvatore-feragamo-uomo-urban-feel", text: "Salvatore Feragamo Uomo Urban Feel", category: "Pria" },
-  { value: "salvatore-feragamo-intense-leather", text: "Salvatore Feragamo Intense Leather", category: "Pria" },
-  { value: "shawn-mendes-signature-2017", text: "Shawn Mendes Signature 2017", category: "Pria" },
-  { value: "swiss-army-victorinox-altitude", text: "Swiss Army Victorinox Altitude", category: "Pria" },
-  { value: "thierry-mugler-alien-man", text: "Thierry Mugler Alien Man", category: "Pria" },
-  { value: "thierry-mugler-angel-man", text: "Thierry Mugler Angel Man", category: "Pria" },
-  { value: "tom-ford-noir", text: "Tom Ford Noir", category: "Pria" },
-  { value: "tom-ford-ombre-leather-parfum", text: "Tom Ford Ombre Leather Parfum", category: "Pria" },
-  { value: "tom-ford-oud-wood", text: "Tom Ford Oud Wood", category: "Pria" },
-  { value: "tom-ford-tobacco-oud-man", text: "Tom Ford Tobacco Oud Man", category: "Pria" },
-  { value: "tomford-noir-extrem-parfume", text: "Tomford Noir Extrem Parfume", category: "Pria" },
-  { value: "tommy-boy", text: "Tommy Boy", category: "Pria" },
-  { value: "tommy-hilfiger-loud-for-him", text: "Tommy Hilfiger Loud For Him", category: "Pria" },
-  { value: "tommy-hilfiger-atletics", text: "Tommy Hilfiger Atletics", category: "Pria" },
-  { value: "tommy-hilfiger-freedom-man", text: "Tommy Hilfiger Freedom Man", category: "Pria" },
-  { value: "tommy-t", text: "Tommy T", category: "Pria" },
-  { value: "trusadi-uomo", text: "Trusadi Uomo", category: "Pria" },
-  { value: "versace-blue-jeans", text: "Versace Blue Jeans", category: "Pria" },
-  { value: "versace-dylan-blue", text: "Versace Dylan Blue", category: "Pria" },
-  { value: "versace-eros-flame-men", text: "Versace Eros Flame Men", category: "Pria" },
-  { value: "versace-eros-man", text: "Versace Eros Man", category: "Pria" },
-  { value: "versace-pour-homme", text: "Versace Pour Homme", category: "Pria" },
-  { value: "versace-red-jeans", text: "Versace Red Jeans", category: "Pria" },
-  { value: "victor-rolf-spicebomb", text: "Victor & Rolf Spicebomb", category: "Pria" },
-  { value: "victor-rolf-spicebomb-extreme", text: "Victor&Rolf Spicebomb Extreme", category: "Pria" },
-  { value: "wayne-roney", text: "Wayne Roney", category: "Pria" },
-  { value: "ysl-y-edp-intense-man", text: "YSL Y EDP Intense Man", category: "Pria" },
-  { value: "ysl-y-le-parfume-2021-for-men", text: "YSL Y Le Parfume 2021 For Men", category: "Pria" },
-  { value: "zara-80-man", text: "Zara 8.0 Man", category: "Pria" },
-  { value: "zara-gold-men", text: "Zara Gold Men", category: "Pria" },
-  { value: "zara-night-pour-homme-ii-sport", text: "Zara Night Pour Homme II Sport", category: "Pria" },
-  { value: "zara-tobacco-collection-rich-warm-addictive", text: "Zara Tobacco Collection Rich Warm Addictive", category: "Pria" },
-  { value: "zara-tobacco-vanilla-collection-rich-warm-2021", text: "Zara Tobacco Vanilla Collection Rich Warm 2021", category: "Pria" },
-  { value: "zara-vibrant-leather", text: "Zara Vibrant Leather", category: "Pria" },
-  { value: "zara-white-warm-for-men", text: "Zara White Warm For Men", category: "Pria" },
-
-
-                // --- Contoh Parfum untuk Wanita (Silakan tambahkan data lengkap Anda di sini) ---
-  { value: "agnes-monica-reve", text: "Agnes Monica Reve", category: "Wanita" },
-  { value: "agnez-mo", text: "Agnez Mo", category: "Wanita" },
-  { value: "aigner-blue-woman", text: "Aigner Blue Woman", category: "Wanita" },
-  { value: "aigner-debut", text: "Aigner Debut", category: "Wanita" },
-  { value: "aigner-in-leather-woman", text: "Aigner In Leather Woman", category: "Wanita" },
-  { value: "aigner-starlight", text: "Aigner Starlight", category: "Wanita" },
-  { value: "aigner-too-feminine", text: "Aigner Too Feminine", category: "Wanita" },
-  { value: "allissa-alley", text: "Allissa Alley", category: "Wanita" },
-  { value: "angelina-jolie-by-night", text: "Angelina Jolie by Night", category: "Wanita" },
-  { value: "anna-sui-dolly-girl", text: "Anna Sui Dolly Girl", category: "Wanita" },
-  { value: "anna-sui-dolly-girl-on-the-beach", text: "Anna Sui Dolly Girl on the Beach", category: "Wanita" },
-  { value: "anna-sui-dream", text: "Anna Sui Dream", category: "Wanita" },
-  { value: "anna-sui-fairy-dance-secret-wish-woman", text: "Anna Sui Fairy Dance Secret Wish Woman", category: "Wanita" },
-  { value: "anna-sui-fantasia-mermaid", text: "Anna Sui Fantasia Mermaid", category: "Wanita" },
-  { value: "anna-sui-fantasia-woman", text: "Anna Sui Fantasia Woman", category: "Wanita" },
-  { value: "anna-sui-flight-of-fancy", text: "Anna Sui Flight of Fancy", category: "Wanita" },
-  { value: "anna-sui-forbidden-affair", text: "Anna Sui Forbidden Affair", category: "Wanita" },
-  { value: "anna-sui-lavie-de-boheme", text: "Anna Sui Lavie de Boheme", category: "Wanita" },
-  { value: "anna-sui-magic-romance", text: "Anna Sui Magic Romance", category: "Wanita" },
-  { value: "anna-sui-rock-me-woman", text: "Anna Sui Rock Me Woman", category: "Wanita" },
-  { value: "anna-sui-romantica", text: "Anna Sui Romantica", category: "Wanita" },
-  { value: "anna-sui-secret-wish", text: "Anna Sui Secret Wish", category: "Wanita" },
-  { value: "antonio-banderas-golden-secret-woman", text: "Antonio Banderas Golden Secret Woman", category: "Wanita" },
-  { value: "antonio-banderas-woman", text: "Antonio Banderas Woman", category: "Wanita" },
-  { value: "aqualina-black-sugar-women", text: "Aqualina Black Sugar Women", category: "Wanita" },
-  { value: "ariana-grande-candy-like-sweet-limited-edition", text: "Ariana Grande Candy Like Sweet Limited Edition", category: "Wanita" },
-  { value: "ariana-grande-cloud-pink", text: "Ariana Grande Cloud Pink", category: "Wanita" },
-  { value: "ariana-grande-cloud-woman", text: "Ariana Grande Cloud Woman", category: "Wanita" },
-  { value: "ariana-grande-moon-light", text: "Ariana Grande Moon Light", category: "Wanita" },
-  { value: "ariana-grande-rem", text: "Ariana Grande R.E.M", category: "Wanita" },
-  { value: "ariana-grande-thank-u-next", text: "Ariana Grande Thank U Next", category: "Wanita" },
-  { value: "avril-lavigne-black-star", text: "Avril Lavigne Black Star", category: "Wanita" },
-  { value: "avril-lavigne-forbidden-rose", text: "Avril Lavigne Forbidden Rose", category: "Wanita" },
-  { value: "avril-lavigne-wild-rose", text: "Avril Lavigne Wild Rose", category: "Wanita" },
-  { value: "aura-swarovski", text: "Aura Swarovski", category: "Wanita" },
-  { value: "bath-body-works-be-joyfull", text: "Bath & Body Works Be Joyfull", category: "Wanita" },
-  { value: "bath-body-works-mad-about-you", text: "Bath & Body Works Mad About You", category: "Wanita" },
-  { value: "bath-body-works-beautiful-day", text: "Bath & Body Works Beautiful Day", category: "Wanita" },
-  { value: "bath-body-works-cashmere-glow", text: "Bath & Body Works Cashmere Glow", category: "Wanita" },
-  { value: "bath-body-works-cosy-sunday-morning", text: "Bath & Body Works Cosy Sunday Morning", category: "Wanita" },
-  { value: "bath-body-works-cup-of-warm-w", text: "Bath & Body Works Cup of Warm W", category: "Wanita" },
-  { value: "bath-body-works-endless-weekend", text: "Bath & Body Works Endless Weekend", category: "Wanita" },
-  { value: "bath-body-works-pink-chifon", text: "Bath & Body Works Pink Chifon", category: "Wanita" },
-  { value: "bath-body-works-sea-island-cotton", text: "Bath & Body Works Sea Island Cotton", category: "Wanita" },
-  { value: "bath-and-body-works-in-to-the-star", text: "Bath and Body Works In to the Star", category: "Wanita" },
-  { value: "belle-cherie-fragonard", text: "Belle Cherie Fragonard", category: "Wanita" },
-  { value: "beneton-roso", text: "Beneton Roso", category: "Wanita" },
-  { value: "beneton-tribu", text: "Beneton Tribu", category: "Wanita" },
-  { value: "beneton-pink", text: "Beneton Pink", category: "Wanita" },
-  { value: "beyonce-heat-rush", text: "Beyonce Heat Rush", category: "Wanita" },
-  { value: "beyonce-heat-woman", text: "Beyonce Heat Woman", category: "Wanita" },
-  { value: "billie-eilish", text: "Billie Eilish", category: "Wanita" },
-  { value: "black-cerutti-1881", text: "Black Cerutti 1881", category: "Wanita" },
-  { value: "body-shop-anaya", text: "Body Shop Anaya", category: "Wanita" },
-  { value: "body-shop-aqua-lily", text: "Body Shop Aqua Lily", category: "Wanita" },
-  { value: "body-shop-black-musk", text: "Body Shop Black Musk", category: "Wanita" },
-  { value: "body-shop-english-dawn-white-gardenia", text: "Body Shop English Dawn White Gardenia", category: "Wanita" },
-  { value: "body-shop-english-rose", text: "Body Shop English Rose", category: "Wanita" },
-  { value: "body-shop-forever-red", text: "Body Shop Forever Red", category: "Wanita" },
-  { value: "body-shop-fijian-green-tea", text: "Body Shop Fijian Green Tea", category: "Wanita" },
-  { value: "body-shop-indian-night-jasmine", text: "Body Shop Indian Night Jasmine", category: "Wanita" },
-  { value: "body-shop-italian-summer-fig", text: "Body Shop Italian Summer Fig", category: "Wanita" },
-  { value: "body-shop-love-etc", text: "Body Shop Love Etc", category: "Wanita" },
-  { value: "body-shop-mango", text: "Body Shop Mango", category: "Wanita" },
-  { value: "body-shop-moon-flower", text: "Body Shop Moon Flower", category: "Wanita" },
-  { value: "body-shop-moringa", text: "Body Shop Moringa", category: "Wanita" },
-  { value: "body-shop-pomegranate-red-berries", text: "Body Shop Pomegranate & Red Berries", category: "Wanita" },
-  { value: "body-shop-red-musk", text: "Body Shop Red Musk", category: "Wanita" },
-  { value: "body-shop-shea", text: "Body Shop Shea", category: "Wanita" },
-  { value: "body-shop-vanilla", text: "Body Shop Vanilla", category: "Wanita" },
-  { value: "body-shop-white-musk", text: "Body Shop White Musk", category: "Wanita" },
-  { value: "body-shop-wild-strawberry", text: "Body Shop Wild Strawberry", category: "Wanita" },
-  { value: "bond-no9-woman", text: "Bond No.9 Woman", category: "Wanita" },
-  { value: "britney-spears-believe", text: "Britney Spears Believe", category: "Wanita" },
-  { value: "britney-spears-cosmic-radiance", text: "Britney Spears Cosmic Radiance", category: "Wanita" },
-  { value: "britney-spears-curius", text: "Britney Spears Curius", category: "Wanita" },
-  { value: "britney-spears-fantasy", text: "Britney Spears Fantasy", category: "Wanita" },
-  { value: "britney-spears-hidden-fantasy", text: "Britney Spears Hidden Fantasy", category: "Wanita" },
-  { value: "britney-spears-midnight-fantasi", text: "Britney Spears Midnight Fantasi", category: "Wanita" },
-  { value: "britney-spears-prerogativa-woman", text: "Britney Spears Prerogativa Woman", category: "Wanita" },
-  { value: "britney-spears-private-show", text: "Britney Spears Private Show", category: "Wanita" },
-  { value: "britney-spears-radiance", text: "Britney Spears Radiance", category: "Wanita" },
-  { value: "britney-spears-rainbow-fantasy", text: "Britney Spears Rainbow Fantasy", category: "Wanita" },
-  { value: "burberry-baby-touch", text: "Burberry Baby Touch", category: "Wanita" },
-  { value: "burberry-body-rose-gold", text: "Burberry Body Rose Gold", category: "Wanita" },
-  { value: "burberry-brit-for-woman", text: "Burberry Brit for Woman", category: "Wanita" },
-  { value: "burberry-brit-sheer-woman", text: "Burberry Brit Sheer Woman", category: "Wanita" },
-  { value: "burberry-classic-w", text: "Burberry Classic W", category: "Wanita" },
-  { value: "burberry-eau-de-blanc", text: "Burberry Eau de Blanc", category: "Wanita" },
-  { value: "burberry-her-blossom", text: "Burberry Her Blossom", category: "Wanita" },
-  { value: "burberry-her-edp-2018", text: "Burberry Her EDP 2018", category: "Wanita" },
-  { value: "burberry-her-london-dream", text: "Burberry Her London Dream", category: "Wanita" },
-  { value: "burberry-london-woman", text: "Burberry London Woman", category: "Wanita" },
-  { value: "burberry-my-burberry", text: "Burberry My Burberry", category: "Wanita" },
-  { value: "burberry-my-burberry-blush-woman", text: "Burberry My Burberry Blush Woman", category: "Wanita" },
-  { value: "burberry-sport-woman", text: "Burberry Sport Woman", category: "Wanita" },
-  { value: "burberry-weekend-woman", text: "Burberry Weekend Woman", category: "Wanita" },
-  { value: "bvlgai-aqva-divina", text: "Bvlgai Aqva Divina", category: "Wanita" },
-  { value: "bvlgai-baciami", text: "Bvlgai Baciami", category: "Wanita" },
-  { value: "bvlgai-blv-woman", text: "Bvlgai Blv Woman", category: "Wanita" },
-  { value: "bvlgai-coralia", text: "Bvlgai Coralia", category: "Wanita" },
-  { value: "bvlgai-eau-the-blanc-woman", text: "Bvlgai Eau the Blanc Woman", category: "Wanita" },
-  { value: "bvlgai-goldea", text: "Bvlgai Goldea", category: "Wanita" },
-  { value: "bvlgai-goldea-roman-night", text: "Bvlgai Goldea Roman Night", category: "Wanita" },
-  { value: "bvlgai-jasmine", text: "Bvlgai Jasmine", category: "Wanita" },
-  { value: "bvlgai-jasmine-noir", text: "Bvlgai Jasmine Noir", category: "Wanita" },
-  { value: "bvlgai-moon-jasmine-noir", text: "Bvlgai Moon Jasmine Noir", category: "Wanita" },
-  { value: "bvlgai-omnia-amethys", text: "Bvlgai Omnia Amethys", category: "Wanita" },
-  { value: "bvlgai-omnia-coral", text: "Bvlgai Omnia Coral", category: "Wanita" },
-  { value: "bvlgai-omnia-crystal", text: "Bvlgai Omnia Crystal", category: "Wanita" },
-  { value: "bvlgai-omnia-golden-citrine", text: "Bvlgai Omnia Golden Citrine", category: "Wanita" },
-  { value: "bvlgai-omnia-green-jade", text: "Bvlgai Omnia Green Jade", category: "Wanita" },
-  { value: "bvlgai-omnia-indian-garnet", text: "Bvlgai Omnia Indian Garnet", category: "Wanita" },
-  { value: "bvlgai-omnia-paraibia", text: "Bvlgai Omnia Paraibia", category: "Wanita" },
-  { value: "bvlgai-omnia-pink-shaphire", text: "Bvlgai Omnia Pink Shaphire", category: "Wanita" },
-  { value: "bvlgai-omnia-woman", text: "Bvlgai Omnia Woman", category: "Wanita" },
-  { value: "bvlgai-pour-femme", text: "Bvlgai Pour Femme", category: "Wanita" },
-  { value: "bvlgai-red-tea-eau-the-rough", text: "Bvlgai Red Tea Eau The Rough", category: "Wanita" },
-  { value: "bvlgai-rose-essential", text: "Bvlgai Rose Essential", category: "Wanita" },
-  { value: "bvlgai-rose-goldea", text: "Bvlgai Rose Goldea", category: "Wanita" },
-  { value: "carolina-herrera-women", text: "Carolina Herrera Women", category: "Wanita" },
-  { value: "cartier-carat-woman", text: "Cartier Carat Woman", category: "Wanita" },
-  { value: "cartier-must-the-cartier", text: "Cartier Must the Cartier", category: "Wanita" },
-  { value: "ch-212-h2o-woman", text: "CH 212 H2O Woman", category: "Wanita" },
-  { value: "ch-212-sexy-woman", text: "CH 212 Sexy Woman", category: "Wanita" },
-  { value: "ch-212-surf-for-her", text: "CH 212 Surf For Her", category: "Wanita" },
-  { value: "ch-212-summer", text: "CH 212 Summer", category: "Wanita" },
-  { value: "ch-212-vip-rose", text: "CH 212 VIP Rose", category: "Wanita" },
-  { value: "ch-212-vip-rose-love-ny", text: "CH 212 VIP Rose Love NY", category: "Wanita" },
-  { value: "ch-212-vip-rose-love-ny-woman", text: "CH 212 VIP Rose Love NY Woman", category: "Wanita" },
-  { value: "ch-212-vip-woman", text: "CH 212 VIP Woman", category: "Wanita" },
-  { value: "ch-212-wild-party-woman", text: "CH 212 Wild Party Woman", category: "Wanita" },
-  { value: "ch-212-woman", text: "CH 212 Woman", category: "Wanita" },
-  { value: "ch-beauties", text: "CH Beauties", category: "Wanita" },
-  { value: "ch-chic-woman", text: "CH Chic Woman", category: "Wanita" },
-  { value: "ch-garden-party", text: "CH Garden Party", category: "Wanita" },
-  { value: "ch-good-girl", text: "CH Good Girl", category: "Wanita" },
-  { value: "ch-good-girl-blush", text: "CH Good Girl Blush", category: "Wanita" },
-  { value: "ch-good-girl-edp-legere", text: "CH Good Girl EDP Legere", category: "Wanita" },
-  { value: "ch-good-girl-midnight", text: "CH Good Girl Midnight", category: "Wanita" },
-  { value: "ch-good-girl-velvet-fatole-woman", text: "CH Good Girl Velvet Fatole Woman", category: "Wanita" },
-  { value: "ch-grand-tour-woman", text: "CH Grand Tour Woman", category: "Wanita" },
-  { value: "ch-me-first", text: "CH Me First", category: "Wanita" },
-  { value: "ch-sandal-ruby", text: "CH Sandal Ruby", category: "Wanita" },
-  { value: "chacarel-amor-amor-1987", text: "Chacarel Amor Amor 1987", category: "Wanita" },
-  { value: "chacarel-scarlett", text: "Chacarel Scarlett", category: "Wanita" },
-  { value: "chacarel-yes-im-pink-first", text: "Chacarel Yes Im Pink First", category: "Wanita" },
-  { value: "chanel-allure-woman", text: "Chanel Allure Woman", category: "Wanita" },
-  { value: "chanel-chance", text: "Chanel Chance", category: "Wanita" },
-  { value: "chanel-chance-eau-de-tendre", text: "Chanel Chance Eau de Tendre", category: "Wanita" },
-  { value: "chanel-chance-eau-tendre", text: "Chanel Chance Eau Tendre", category: "Wanita" },
-  { value: "chanel-coco-mademoiselle-leau-privee", text: "Chanel Coco Mademoiselle L'Eau Privee", category: "Wanita" },
-  { value: "chanel-coco-noir", text: "Chanel Coco Noir", category: "Wanita" },
-  { value: "chanel-crhistal-eau-deverte", text: "Chanel Crhistal Eau Deverte", category: "Wanita" },
-  { value: "chanel-gabriel-woman", text: "Chanel Gabriel Woman", category: "Wanita" },
-  { value: "chanel-gabrielle-essence", text: "Chanel Gabrielle Essence", category: "Wanita" },
-  { value: "chanel-garbielle-parfume", text: "Chanel Garbielle Parfume", category: "Wanita" },
-  { value: "chanel-no5", text: "Chanel No. 5", category: "Wanita" },
-  { value: "cherry-sediction", text: "Cherry Sediction", category: "Wanita" },
-  { value: "chloe-2008", text: "Chloe 2008", category: "Wanita" },
-  { value: "chloe-edp", text: "Chloe EDP", category: "Wanita" },
-  { value: "chloe-love-story", text: "Chloe Love Story", category: "Wanita" },
-  { value: "chloe-rose-edition", text: "Chloe Rose Edition", category: "Wanita" },
-  { value: "chloe-see-eau-fraiche-woman", text: "Chloe See Eau Fraiche Woman", category: "Wanita" },
-  { value: "chritian-dior-diorissimo", text: "Chritian Dior Diorissimo", category: "Wanita" },
-  { value: "christina-aguilera", text: "Christina Aguilera", category: "Wanita" },
-  { value: "christian-dior-addict-2", text: "Christian Dior Addict 2", category: "Wanita" },
-  { value: "christian-dior-addict1", text: "Christian Dior Addict1", category: "Wanita" },
-  { value: "christian-dior-dune-woman", text: "Christian Dior Dune Woman", category: "Wanita" },
-  { value: "christian-dior-escale-pondy-cherry", text: "Christian Dior Escale Pondy Cherry", category: "Wanita" },
-  { value: "christian-dior-forever-ever", text: "Christian Dior Forever & Ever", category: "Wanita" },
-  { value: "christian-dior-jadore", text: "Christian Dior J'Adore", category: "Wanita" },
-  { value: "christian-dior-jadore-in-joy", text: "Christian Dior J'Adore In Joy", category: "Wanita" },
-  { value: "christian-dior-miss-dior-blooming-absolutely", text: "Christian Dior Miss Dior Blooming Absolutely", category: "Wanita" },
-  { value: "christian-dior-miss-dior-blooming-bouquet", text: "Christian Dior Miss Dior Blooming Bouquet", category: "Wanita" },
-  { value: "christian-dior-miss-dior-cherry", text: "Christian Dior Miss Dior Cherry", category: "Wanita" },
-  { value: "christian-dior-miss-dior-rose-n-roses", text: "Christian Dior Miss Dior Rose N Roses", category: "Wanita" },
-  { value: "christian-dior-poison-girl", text: "Christian Dior Poison Girl", category: "Wanita" },
-  { value: "christian-dior-poison-ungu", text: "Christian Dior Poison Ungu", category: "Wanita" },
-  { value: "christian-dior-pure-poison", text: "Christian Dior Pure Poison", category: "Wanita" },
-  { value: "christian-dior-vanilla-diorama", text: "Christian Dior Vanilla Diorama", category: "Wanita" },
-  { value: "christian-dune-woman", text: "Christian Dune Woman", category: "Wanita" },
-  { value: "christian-rave-woman", text: "Christian Rave Woman", category: "Wanita" },
-  { value: "ck-beauty", text: "CK Beauty", category: "Wanita" },
-  { value: "ck-bee", text: "CK Bee", category: "Wanita" },
-  { value: "ck-contradiction", text: "CK Contradiction", category: "Wanita" },
-  { value: "ck-escape-woman", text: "CK Escape Woman", category: "Wanita" },
-  { value: "ck-eternity-air-female", text: "CK Eternity Air Female", category: "Wanita" },
-  { value: "ck-eternity-annyversary-25-th-edition-woman", text: "CK Eternity Annyversary 25 Th Edition Woman", category: "Wanita" },
-  { value: "ck-eternity-moment", text: "CK Eternity Moment", category: "Wanita" },
-  { value: "ck-eternity-now-woman", text: "CK Eternity Now Woman", category: "Wanita" },
-  { value: "ck-eternity-summer-2010-women", text: "CK Eternity Summer 2010 Women", category: "Wanita" },
-  { value: "ck-eternity-woman", text: "CK Eternity Woman", category: "Wanita" },
-  { value: "ck-euphoria-blossom", text: "CK Euphoria Blossom", category: "Wanita" },
-  { value: "ck-euphoria-forbidden", text: "CK Euphoria Forbidden", category: "Wanita" },
-  { value: "ck-euphoria-pure-gold", text: "CK Euphoria Pure Gold", category: "Wanita" },
-  { value: "ck-euphoria-woman", text: "CK Euphoria Woman", category: "Wanita" },
-  { value: "ck-in-2-u-for-her", text: "CK In 2 U For Her", category: "Wanita" },
-  { value: "ck-in-2-u-pop-her", text: "CK In 2 U Pop Her", category: "Wanita" },
-  { value: "ck-one-shock-her", text: "CK One Shock Her", category: "Wanita" },
-  { value: "ck-reveal", text: "CK Reveal", category: "Wanita" },
-  { value: "ck-sheer-beauty-essence", text: "CK Sheer Beauty Essence", category: "Wanita" },
-  { value: "ck-truet-woman", text: "CK Truet Woman", category: "Wanita" },
-  { value: "clinique-happy-heart", text: "Clinique Happy Heart", category: "Wanita" },
-  { value: "clinique-happy-woman", text: "Clinique Happy Woman", category: "Wanita" },
-  { value: "clinique-simpli", text: "Clinique Simpli", category: "Wanita" },
-  { value: "coach-edp-woman", text: "Coach EDP Woman", category: "Wanita" },
-  { value: "coach-floral-2018", text: "Coach Floral 2018", category: "Wanita" },
-  { value: "coach-poppy-freesia-blossom-woman", text: "Coach Poppy Freesia Blossom Woman", category: "Wanita" },
-  { value: "coach-woman", text: "Coach Woman", category: "Wanita" },
-  { value: "cookies", text: "Cookies", category: "Wanita" },
-  { value: "creed-aventus-woman", text: "Creed Aventus Woman", category: "Wanita" },
-  { value: "cuddle-baby", text: "Cuddle Baby", category: "Wanita" },
-  { value: "d&g-dolce-violet-woman", text: "D&G Dolce Violet Woman", category: "Wanita" },
-  { value: "d&g-dolce-woman", text: "D&G Dolce Woman", category: "Wanita" },
-  { value: "d&g-light-blue-forever-for-her", text: "D&G Light Blue Forever For Her", category: "Wanita" },
-  { value: "d&g-light-blue-woman", text: "D&G Light Blue Woman", category: "Wanita" },
-  { value: "d&g-no3-limperatrice", text: "D&G No.3 L'Imperatrice", category: "Wanita" },
-  { value: "d&g-pour-femme", text: "D&G Pour Femme", category: "Wanita" },
-  { value: "d&g-pour-femme-intense", text: "D&G Pour Femme Intense", category: "Wanita" },
-  { value: "d&g-q-woman", text: "D&G Q Woman", category: "Wanita" },
-  { value: "d&g-rosa-excelsa", text: "D&G Rosa Excelsa", category: "Wanita" },
-  { value: "d&g-rose-the-one-woman", text: "D&G Rose The One Woman", category: "Wanita" },
-  { value: "d&g-the-one-collector-woman", text: "D&G The One Collector Woman", category: "Wanita" },
-  { value: "d&g-the-one-woman", text: "D&G The One Woman", category: "Wanita" },
-  { value: "d&g-the-only-one-woman", text: "D&G The Only One Woman", category: "Wanita" },
-  { value: "d&g-woman-d&g-red-w", text: "D&G Woman - D&G Red W", category: "Wanita" },
-  { value: "davidoff-cool-water-summer-dive-woman", text: "Davidoff Cool Water Summer Dive Woman", category: "Wanita" },
-  { value: "de-marly-delina", text: "De Marley Delina", category: "Wanita" },
-  { value: "de-marly-oriana", text: "De Marly Oriana", category: "Wanita" },
-  { value: "de-marly-valaya", text: "De Marly Valaya", category: "Wanita" },
-  { value: "dkny-apple-raspberry-candy", text: "DKNY Apple Raspberry Candy", category: "Wanita" },
-  { value: "dkny-be-delicious", text: "DKNY Be Delicious", category: "Wanita" },
-  { value: "dkny-be-delicious-fresh-blossom", text: "DKNY Be Delicious Fresh Blossom", category: "Wanita" },
-  { value: "dkny-be-delicious-woman", text: "DKNY Be Delicious Woman", category: "Wanita" },
-  { value: "dkny-delicious-candy-apples-juicy-berry", text: "DKNY Delicious Candy Apples Juicy Berry", category: "Wanita" },
-  { value: "dkny-delicious-candy-apples-raspberry", text: "DKNY Delicious Candy Apples Raspberry", category: "Wanita" },
-  { value: "dkny-donna-karan-women", text: "DKNY Donna Karan Women", category: "Wanita" },
-  { value: "dolce-boss", text: "Dolce Boss", category: "Wanita" },
-  { value: "donna-karen-red-delicious-woman", text: "Donna Karen Red Delicious Woman", category: "Wanita" },
-  { value: "elizabeth-arden-5th-avenue", text: "Elizabeth Arden 5Th Avenue", category: "Wanita" },
-  { value: "elizabeth-arden-always-woman", text: "Elizabeth Arden Always Woman", category: "Wanita" },
-  { value: "elizabeth-arden-beauty", text: "Elizabeth Arden Beauty", category: "Wanita" },
-  { value: "elizabeth-arden-green-tea", text: "Elizabeth Arden Green Tea", category: "Wanita" },
-  { value: "elizabeth-arden-my-avenue", text: "Elizabeth Arden My Avenue", category: "Wanita" },
-  { value: "elizabeth-arden-provokatif", text: "Elizabeth Arden Provokatif", category: "Wanita" },
-  { value: "elizabeth-arden-taylor-diamond-woman", text: "Elizabeth Arden Taylor Diamond Woman", category: "Wanita" },
-  { value: "elizabeth-arden-untold", text: "Elizabeth Arden Untold", category: "Wanita" },
-  { value: "ellie-saab-2018-girl-of-now-shine", text: "Ellie Saab 2018 Girl of Now Shine", category: "Wanita" },
-  { value: "ellie-saab-le-parfume", text: "Ellie Saab Le Parfume", category: "Wanita" },
-  { value: "ellie-saab-le-parfume-in-white", text: "Ellie Saab Le Parfume in White", category: "Wanita" },
-  { value: "elie-saab-le-parfum", text: "Elie Saab Le Parfum", category: "Wanita" },
-  { value: "escad-en-borne-in-paradise", text: "Escad En Borne In Paradise", category: "Wanita" },
-  { value: "escad-brisa-cubana", text: "Escad Brisa Cubana", category: "Wanita" },
-  { value: "escad-candy-love", text: "Escad Candy Love", category: "Wanita" },
-  { value: "escad-cherry-in-the-air", text: "Escad Cherry in the Air", category: "Wanita" },
-  { value: "escad-escada", text: "Escad Escada", category: "Wanita" },
-  { value: "escad-especially", text: "Escad Especially", category: "Wanita" },
-  { value: "escad-fiesta-carioca", text: "Escad Fiesta Carioca", category: "Wanita" },
-  { value: "escad-flor-del-sol", text: "Escad Flor Del Sol", category: "Wanita" },
-  { value: "escad-incredble-me", text: "Escad Incredble Me", category: "Wanita" },
-  { value: "escad-island-kiss", text: "Escad Island Kiss", category: "Wanita" },
-  { value: "escad-joy-full", text: "Escad Joy Full", category: "Wanita" },
-  { value: "escad-magnetism-woman", text: "Escad Magnetism Woman", category: "Wanita" },
-  { value: "escad-marine-groove", text: "Escad Marine Groove", category: "Wanita" },
-  { value: "escad-moon-sparkle-woman", text: "Escad Moon Sparkle Woman", category: "Wanita" },
-  { value: "escad-pasific-paradise", text: "Escad Pasific Paradise", category: "Wanita" },
-  { value: "escad-sentimen-woman", text: "Escad Sentimen Woman", category: "Wanita" },
-  { value: "escad-sexy-grafity", text: "Escad Sexy Grafity", category: "Wanita" },
-  { value: "escad-show-me-love", text: "Escad Show Me Love", category: "Wanita" },
-  { value: "escad-sorberto-roso", text: "Escad Sorberto Roso", category: "Wanita" },
-  { value: "escad-summer-festival", text: "Escad Summer Festival", category: "Wanita" },
-  { value: "escad-taj-sunset", text: "Escad Taj Sunset", category: "Wanita" },
-  { value: "escafawa", text: "Escafawa", category: "Wanita" },
-  { value: "esprit-summer", text: "Esprit Summer", category: "Wanita" },
-  { value: "esprit-woman-only-ifra-to-10", text: "Esprit Woman - Only Ifra to 10%", category: "Wanita" },
-  { value: "estee-dupon", text: "Estee Dupon", category: "Wanita" },
-  { value: "estee-lauder-beautifull-love", text: "Estee Lauder Beautifull Love", category: "Wanita" },
-  { value: "estee-lauder-beautifull", text: "Estee Lauder Beautifull", category: "Wanita" },
-  { value: "estee-lauder-beyond-paradise", text: "Estee Lauder Beyond Paradise", category: "Wanita" },
-  { value: "estee-lauder-intuition", text: "Estee Lauder Intuition", category: "Wanita" },
-  { value: "estee-lauder-modern-muse-le-rouge", text: "Estee Lauder Modern Muse Le Rouge", category: "Wanita" },
-  { value: "estee-lauder-modern-musk", text: "Estee Lauder Modern Musk", category: "Wanita" },
-  { value: "estee-lauder-pleasure", text: "Estee Lauder Pleasure", category: "Wanita" },
-  { value: "estee-lauder-pleasure-woman", text: "Estee Lauder Pleasure Woman", category: "Wanita" },
-  { value: "ex-nihilo-fleur-narcotique", text: "Ex Nihilo Fleur Narcotique", category: "Wanita" },
-  { value: "fenty-fenty-beauty", text: "Fenty Fenty Beauty", category: "Wanita" },
-  { value: "framboise", text: "Framboise", category: "Wanita" },
-  { value: "fresh-berry-2", text: "Fresh Berry 2", category: "Wanita" },
-  { value: "giorgio-armani-aquadigio-woman", text: "Giorgio Armani Aquadigio Woman", category: "Wanita" },
-  { value: "giorgio-armani-code-chasmire", text: "Giorgio Armani Code Chasmire", category: "Wanita" },
-  { value: "giorgio-armani-code-luna", text: "Giorgio Armani Code Luna", category: "Wanita" },
-  { value: "giorgio-armani-code-luna-w", text: "Giorgio Armani Code Luna W", category: "Wanita" },
-  { value: "giorgio-armani-code-satin-w", text: "Giorgio Armani Code Satin W", category: "Wanita" },
-  { value: "giorgio-armani-code-ultimate-femme", text: "Giorgio Armani Code Ultimate Femme", category: "Wanita" },
-  { value: "giorgio-armani-emporio-diamond-woman", text: "Giorgio Armani Emporio Diamond Woman", category: "Wanita" },
-  { value: "giorgio-armani-emporio-in-love-with-you-for-w", text: "Giorgio Armani Emporio in Love With You For W", category: "Wanita" },
-  { value: "giorgio-armani-emporio-woman", text: "Giorgio Armani Emporio Woman", category: "Wanita" },
-  { value: "giorgio-armani-idole-darmani", text: "Giorgio Armani Idole D'Armani", category: "Wanita" },
-  { value: "giorgio-armani-mania-woman", text: "Giorgio Armani Mania Woman", category: "Wanita" },
-  { value: "giorgio-armani-my-way-intense", text: "Giorgio Armani My Way Intense", category: "Wanita" },
-  { value: "giorgio-armani-my-way-nectar", text: "Giorgio Armani My Way Nectar", category: "Wanita" },
-  { value: "giorgio-armani-ocean-di-gioia", text: "Giorgio Armani Ocean di Gioia", category: "Wanita" },
-  { value: "giorgio-armani-sensi-white-women", text: "Giorgio Armani Sensi White Women", category: "Wanita" },
-  { value: "giorgio-armani-si-black-cap", text: "Giorgio Armani Si Black Cap", category: "Wanita" },
-  { value: "giorgio-armani-si-fiory-woman", text: "Giorgio Armani Si Fiory Woman", category: "Wanita" },
-  { value: "giorgio-armani-si-golden-bow", text: "Giorgio Armani Si Golden Bow", category: "Wanita" },
-  { value: "giorgio-armani-si-intense-2021", text: "Giorgio Armani Si Intense 2021", category: "Wanita" },
-  { value: "giorgio-armani-si-nacre-edition", text: "Giorgio Armani Si Nacre Edition", category: "Wanita" },
-  { value: "giorgio-armani-si-passione-for-woman", text: "Giorgio Armani Si Passione For Woman", category: "Wanita" },
-  { value: "giorgio-armani-si", text: "Giorgio Armani Si", category: "Wanita" },
-  { value: "goddes-burberry", text: "Goddes Burberry", category: "Wanita" },
-  { value: "gorgeous-gucci-gardenia", text: "Gorgeous Gucci Gardenia", category: "Wanita" },
-  { value: "gucci-bamboo", text: "Gucci Bamboo", category: "Wanita" },
-  { value: "gucci-black-women", text: "Gucci Black Women", category: "Wanita" },
-  { value: "gucci-bloom", text: "Gucci Bloom", category: "Wanita" },
-  { value: "gucci-bloom-intense", text: "Gucci Bloom Intense", category: "Wanita" },
-  { value: "gucci-envy", text: "Gucci Envy", category: "Wanita" },
-  { value: "gucci-envy-me", text: "Gucci Envy Me", category: "Wanita" },
-  { value: "gucci-flora", text: "Gucci Flora", category: "Wanita" },
-  { value: "gucci-flora-eau-fraiche", text: "Gucci Flora Eau Fraiche", category: "Wanita" },
-  { value: "gucci-flora-garden-gracious-rose", text: "Gucci Flora Garden Gracious Rose", category: "Wanita" },
-  { value: "gucci-flora-generous-violet-women", text: "Gucci Flora Generous Violet Women", category: "Wanita" },
-  { value: "gucci-flora-glamourous-magnolia-woman", text: "Gucci Flora Glamourous Magnolia Woman", category: "Wanita" },
-  { value: "gucci-flora-gorgeous-woman", text: "Gucci Flora Gorgeous Woman", category: "Wanita" },
-  { value: "gucci-flora-tuberose", text: "Gucci Flora Tuberose", category: "Wanita" },
-  { value: "gucci-gardeni", text: "Gucci Gardeni", category: "Wanita" },
-  { value: "gucci-guilty-love-edition-mmxx1-for", text: "Gucci Guilty Love Edition Mmxx1 For", category: "Wanita" },
-  { value: "gucci-guilty-pour-femme-absolute", text: "Gucci Guilty Pour Femme Absolute", category: "Wanita" },
-  { value: "gucci-guilty-woman", text: "Gucci Guilty Woman", category: "Wanita" },
-  { value: "gucci-premiere-eau-de-toilette", text: "Gucci Premiere Eau de Toilette", category: "Wanita" },
-  { value: "gucci-premiere", text: "Gucci Premiere", category: "Wanita" },
-  { value: "gucci-rush-1", text: "Gucci Rush 1", category: "Wanita" },
-  { value: "gucci-rush-2", text: "Gucci Rush 2", category: "Wanita" },
-  { value: "gucci-tears-from-the-moon-woman", text: "Gucci Tears From The Moon Woman", category: "Wanita" },
-  { value: "gucci-type-woman", text: "Gucci Type Woman", category: "Wanita" },
-  { value: "gucci-where-my-heart-beats", text: "Gucci Where My Heart Beats", category: "Wanita" },
-  { value: "guerlain-idylle-eau-sublime-w", text: "Guerlain Idylle Eau Sublime W", category: "Wanita" },
-  { value: "guerlain-idylle-duet", text: "Guerlain Idylle Duet", category: "Wanita" },
-  { value: "guerlain-mon", text: "Guerlain Mon", category: "Wanita" },
-  { value: "guerlain-samsara", text: "Guerlain Samsara", category: "Wanita" },
-  { value: "guerlain-shalimar", text: "Guerlain Shalimar", category: "Wanita" },
-  { value: "guerlain-shalimar-parfume-initial", text: "Guerlain Shalimar Parfume Initial", category: "Wanita" },
-  { value: "guess-by-marciano", text: "Guess By Marciano", category: "Wanita" },
-  { value: "guess-girl-female", text: "Guess Girl Female", category: "Wanita" },
-  { value: "guess-girl-summer", text: "Guess Girl Summer", category: "Wanita" },
-  { value: "guess-gold", text: "Guess Gold", category: "Wanita" },
-  { value: "guess-marciano-woman", text: "Guess Marciano Woman", category: "Wanita" },
-  { value: "guess-night-female", text: "Guess Night Female", category: "Wanita" },
-  { value: "guess-pink", text: "Guess Pink", category: "Wanita" },
-  { value: "guess-seductive", text: "Guess Seductive", category: "Wanita" },
-  { value: "guess-seductive-im-yours", text: "Guess Seductive Im Your's", category: "Wanita" },
-  { value: "guess-seductive-red", text: "Guess Seductive Red", category: "Wanita" },
-  { value: "gwen-stefani-harajuku-lovers-baby", text: "Gwen Stefani Harajuku Lovers Baby", category: "Wanita" },
-  { value: "gwen-stefani-harajuku-lovers-g-of-the-sea", text: "Gwen Stefani Harajuku Lovers G of the Sea", category: "Wanita" },
-  { value: "hello-kitty-diamond", text: "Hello Kitty Diamond", category: "Wanita" },
-  { value: "hermes-24-faubourg", text: "Hermes 24, Faubourg", category: "Wanita" },
-  { value: "hermes-kelly-caleche", text: "Hermes Kelly Caleche", category: "Wanita" },
-  { value: "hermes-twilly", text: "Hermes Twilly", category: "Wanita" },
-  { value: "hugo-boss-alive-parfume-woman", text: "Hugo Boss Alive Parfume Woman", category: "Wanita" },
-  { value: "hugo-boss-alive-woman", text: "Hugo Boss Alive Woman", category: "Wanita" },
-  { value: "hugo-boss-army-woman", text: "Hugo Boss Army Woman", category: "Wanita" },
-  { value: "hugo-boss-deep-red", text: "Hugo Boss Deep Red", category: "Wanita" },
-  { value: "hugo-boss-eau-de-parfume", text: "Hugo Boss Eau de Parfume", category: "Wanita" },
-  { value: "hugo-boss-jour-journey", text: "Hugo Boss Jour Journey", category: "Wanita" },
-  { value: "hugo-boss-ma-vie-pour-femme", text: "Hugo Boss Ma Vie Pour Femme", category: "Wanita" },
-  { value: "hugo-boss-nuit-pour-femme", text: "Hugo Boss Nuit Pour Femme", category: "Wanita" },
-  { value: "hugo-boss-orange-woman", text: "Hugo Boss Orange Woman", category: "Wanita" },
-  { value: "hugo-boss-pure-purple", text: "Hugo Boss Pure Purple", category: "Wanita" },
-  { value: "hugo-boss-red-woman", text: "Hugo Boss Red Woman", category: "Wanita" },
-  { value: "hugo-boss-the-scent-intense-woman", text: "Hugo Boss The Scent Intense Woman", category: "Wanita" },
-  { value: "hugo-boss-the-scent-magnetic-woman", text: "Hugo Boss The Scent Magnetic Woman", category: "Wanita" },
-  { value: "hugo-boss-the-scent-woman", text: "Hugo Boss The Scent Woman", category: "Wanita" },
-  { value: "hugo-boss-xx-for-her", text: "Hugo Boss Xx For Her", category: "Wanita" },
-  { value: "jo-malone-peony-blush", text: "Jo Malone Peony Blush", category: "Wanita" },
-  { value: "jo-malone-poppy-barley", text: "Jo Malone Poppy & Barley", category: "Wanita" },
-  { value: "jo-malone-poppy-barley-cologne", text: "Jo Malone Poppy & Barley Cologne", category: "Wanita" },
-  { value: "jo-malone-red-hibiscus", text: "Jo Malone Red Hibiscus", category: "Wanita" },
-  { value: "jo-malone-red-roses", text: "Jo Malone Red Roses", category: "Wanita" },
-  { value: "jo-malone-rose-magnolia-cologne-2024-woman", text: "Jo Malone Rose & Magnolia Cologne 2024 Woman", category: "Wanita" },
-  { value: "jo-malone-rose-blush", text: "Jo Malone Rose Blush", category: "Wanita" },
-  { value: "jo-malone-rose-blush-cologne-2023-uniseks", text: "Jo Malone Rose Blush Cologne 2023 Uniseks", category: "Wanita" },
-  { value: "jo-malone-rose-water-vanilla-cologne", text: "Jo Malone Rose Water & Vanilla Cologne", category: "Wanita" },
-  { value: "jo-malone-wild-bluebell", text: "Jo Malone Wild Bluebell", category: "Wanita" },
-  { value: "jo-malone-yellow-hibiscus-edc", text: "Jo Malone Yellow Hibiscus EDC", category: "Wanita" },
-  { value: "jodor-el-oud", text: "Jodor El Oud", category: "Wanita" },
-  { value: "joop-thriling-woman", text: "Joop Thriling Woman", category: "Wanita" },
-  { value: "joop-woow", text: "Joop Woow", category: "Wanita" },
-  { value: "jovan-black-musk", text: "Jovan Black Musk", category: "Wanita" },
-  { value: "jpg-scandal-by-night", text: "JPG Scandal by Night", category: "Wanita" },
-  { value: "jpg-scandal-night", text: "JPG Scandal Night", category: "Wanita" },
-  { value: "jpg-scandal-woman", text: "JPG Scandal Woman", category: "Wanita" },
-  { value: "jpg-scandal-women", text: "JPG Scandal Women", category: "Wanita" },
-  { value: "juice-couture-viva-la-rose", text: "Juice Couture Viva La Rose", category: "Wanita" },
-  { value: "juice-couture-vivalo-juicy", text: "Juice Couture Vivalo Juicy", category: "Wanita" },
-  { value: "justin-bieber-girl-friend", text: "Justin Bieber Girl Friend", category: "Wanita" },
-  { value: "justin-bieber-next-girlfriend", text: "Justin Bieber Next Girlfriend", category: "Wanita" },
-  { value: "justin-bieber-someday", text: "Justin Bieber Someday", category: "Wanita" },
-  { value: "karl-lager-for-her", text: "Karl Lager For Her", category: "Wanita" },
-  { value: "karl-lager-friend-for-her", text: "Karl Lager Friend For Her", category: "Wanita" },
-  { value: "katty-perry-killer-queen", text: "Katty Perry Killer Queen", category: "Wanita" },
-  { value: "katty-perry-meow", text: "Katty Perry Meow", category: "Wanita" },
-  { value: "katty-perry-purr", text: "Katty Perry Purr", category: "Wanita" },
-  { value: "kenzo-amour-my-love", text: "Kenzo Amour My Love", category: "Wanita" },
-  { value: "kenzo-bali", text: "Kenzo Bali", category: "Wanita" },
-  { value: "kenzo-batang", text: "Kenzo Batang", category: "Wanita" },
-  { value: "kenzo-daun", text: "Kenzo Daun", category: "Wanita" },
-  { value: "kenzo-flower", text: "Kenzo Flower", category: "Wanita" },
-  { value: "kenzo-flower-eau-de-lumiere", text: "Kenzo Flower Eau de Lumiere", category: "Wanita" },
-  { value: "kenzo-flower-essential", text: "Kenzo Flower Essential", category: "Wanita" },
-  { value: "kenzo-flower-in-the-air", text: "Kenzo Flower in the Air", category: "Wanita" },
-  { value: "kenzo-jungle-woman", text: "Kenzo Jungle Woman", category: "Wanita" },
-  { value: "kenzo-leaupar-woman", text: "Kenzo L'Eaupar Woman", category: "Wanita" },
-  { value: "kenzo-leaupard-indogo-w", text: "Kenzo L'Eaupard Indogo W", category: "Wanita" },
-  { value: "kenzo-memori-lotus-reve", text: "Kenzo Memori- Lotus Reve", category: "Wanita" },
-  { value: "kenzo-rose-pink", text: "Kenzo Rose Pink", category: "Wanita" },
-  { value: "kenzo-world", text: "Kenzo World", category: "Wanita" },
-  { value: "kenzo-world-power", text: "Kenzo World Power", category: "Wanita" },
-  { value: "killian-princess-woman", text: "Killian Princess Woman", category: "Wanita" },
-  { value: "kim-kardhasian", text: "Kim Kardhasian", category: "Wanita" },
-  { value: "lacoste-pour-femme", text: "Lacoste Pour Femme", category: "Wanita" },
-  { value: "lacoste-touch-of-pink", text: "Lacoste Touch of Pink", category: "Wanita" },
-  { value: "lacoste-love-of-pink", text: "Lacoste Love of Pink", category: "Wanita" },
-  { value: "lancome-hypnose", text: "Lancome Hypnose", category: "Wanita" },
-  { value: "lancome-idole", text: "Lancome Idole", category: "Wanita" },
-  { value: "lancome-la-vie-est-bell", text: "Lancome La Vie Est Bell", category: "Wanita" },
-  { value: "lancome-la-vie-est-belle-intens", text: "Lancome La Vie Est Belle Intens", category: "Wanita" },
-  { value: "lancome-lavie-est-belle-eclat", text: "Lancome Lavie Est Belle Eclat", category: "Wanita" },
-  { value: "lancome-lavie-est-belle-labeel", text: "Lancome Lavie Est Belle L'Abeel", category: "Wanita" },
-  { value: "lancome-miracle", text: "Lancome Miracle", category: "Wanita" },
-  { value: "lancome-poeme", text: "Lancome Poeme", category: "Wanita" },
-  { value: "lancome-tresor-in-love", text: "Lancome Tresor in Love", category: "Wanita" },
-  { value: "lancome-tresor-midnight-rose", text: "Lancome Tresor Midnight Rose", category: "Wanita" },
-  { value: "lancome-tresor", text: "Lancome Tresor", category: "Wanita" },
-  { value: "lattafa-yara", text: "Lattafa Yara", category: "Wanita" },
-  { value: "lattafa-yara-pink", text: "Lattafa Yara Pink", category: "Wanita" },
-  { value: "lattafa-yara-tous", text: "Lattafa Yara Tous", category: "Wanita" },
-  { value: "lady-gaga-fame", text: "Lady Gaga Fame", category: "Wanita" },
-  { value: "loewe-aura-magneta", text: "Loewe Aura Magneta", category: "Wanita" },
-  { value: "loewe-quizas", text: "Loewe Quizas", category: "Wanita" },
-  { value: "loewe-woman-quizas-pas", text: "Loewe Woman Quizas Pas", category: "Wanita" },
-  { value: "loewe-woman", text: "Loewe Woman", category: "Wanita" },
-  { value: "lolita-lempicka-original", text: "Lolita Lempicka Original", category: "Wanita" },
-  { value: "louis-vuiton-attez-vous-woman", text: "Louis Vuiton Attez Vous Woman", category: "Wanita" },
-  { value: "louis-vuiton-fleur-du-desart-woman", text: "Louis Vuiton Fleur du Desart Woman", category: "Wanita" },
-  { value: "louis-vuiton-spell-on-you-woman", text: "Louis Vuiton Spell on You Woman", category: "Wanita" },
-  { value: "maison-francis-kurkdjian-baccarat-rouge-540-w", text: "Maison Francis Kurkdjian Baccarat Rouge 540 W", category: "Wanita" },
-  { value: "marina-de-bourbon-prince", text: "Marina de Bourbon Prince", category: "Wanita" },
-  { value: "mickey-mouse", text: "Mickey Mouse", category: "Wanita" },
-  { value: "miss-dior-rose-n-rose", text: "Miss Dior Rose N Rose", category: "Wanita" },
-  { value: "mont-blanc-signature-woman", text: "Mont Blanc Signature Woman", category: "Wanita" },
-  { value: "mont-blanc-femme", text: "Mont Blanc Femme", category: "Wanita" },
-  { value: "mont-blanc-legend-pour-femme", text: "Mont Blanc Legend Pour Femme", category: "Wanita" },
-  { value: "mont-blanc-presence-dune-femme", text: "Mont Blanc Presence D'Une Femme", category: "Wanita" },
-  { value: "moschino-fresh-couture-gold", text: "Moschino Fresh Couture Gold", category: "Wanita" },
-  { value: "moschino-funny", text: "Moschino Funny", category: "Wanita" },
-  { value: "moschino-i-love-love", text: "Moschino I Love Love", category: "Wanita" },
-  { value: "moschino-pink-bouquet", text: "Moschino Pink Bouquet", category: "Wanita" },
-  { value: "moschino-so-real-cheap-chic", text: "Moschino So Real Cheap Chic", category: "Wanita" },
-  { value: "moschino-toy-2-bubble-gum", text: "Moschino Toy 2 Bubble Gum", category: "Wanita" },
-  { value: "moschino-toy-2-woman", text: "Moschino Toy 2 Woman", category: "Wanita" },
-  { value: "nicki-minaj-pink-friday", text: "Nicki Minaj Pink Friday", category: "Wanita" },
-  { value: "olympea", text: "Olympea", category: "Wanita" },
-  { value: "olympea-blossom", text: "Olympea Blossom", category: "Wanita" },
-  { value: "olympea-solar", text: "Olympea Solar", category: "Wanita" },
-  { value: "oriflame-amber-elixir-w", text: "Oriflame Amber Elixir W", category: "Wanita" },
-  { value: "oriflame-eclat-weekend-w", text: "Oriflame Eclat Weekend W", category: "Wanita" },
-  { value: "oriflame-giordani-gold-essenza-blush-w", text: "Oriflame Giordani Gold Essenza Blush W", category: "Wanita" },
-  { value: "oriflame-giordani-gold-essenza-w", text: "Oriflame Giordani Gold Essenza W", category: "Wanita" },
-  { value: "oriflame-giordani-gold-w", text: "Oriflame Giordani Gold W", category: "Wanita" },
-  { value: "oriflame-love-potion-secrets-w", text: "Oriflame Love Potion Secrets W", category: "Wanita" },
-  { value: "oriflame-love-potion-w", text: "Oriflame Love Potion W", category: "Wanita" },
-  { value: "oriflame-lucent-bliss", text: "Oriflame Lucent Bliss", category: "Wanita" },
-  { value: "oriflame-magnetista-w", text: "Oriflame Magnetista W", category: "Wanita" },
-  { value: "oriflame-memories-daydreaming-in-a-hammock", text: "Oriflame Memories Daydreaming in a Hammock", category: "Wanita" },
-  { value: "oriflame-memories-flirting-under-fireworks", text: "Oriflame Memories Flirting Under Fireworks", category: "Wanita" },
-  { value: "oriflame-memories-hidden-glow-w", text: "Oriflame Memories Hidden Glow W", category: "Wanita" },
-  { value: "oriflame-miss-giordani-w", text: "Oriflame Miss Giordani W", category: "Wanita" },
-  { value: "oriflame-my-little-garden-w", text: "Oriflame My Little Garden W", category: "Wanita" },
-  { value: "oriflame-nordic-waters-woman", text: "Oriflame Nordic Waters Woman", category: "Wanita" },
-  { value: "oriflame-possess-absolute-w", text: "Oriflame Possess Absolute W", category: "Wanita" },
-  { value: "oriflame-possess-w", text: "Oriflame Possess W", category: "Wanita" },
-  { value: "oriflame-s-8-edt-w", text: "Oriflame S 8 EDT W", category: "Wanita" },
-  { value: "oriflame-signature-generation-w", text: "Oriflame Signature Generation W", category: "Wanita" },
-  { value: "oriflame-so-fever-her-w", text: "Oriflame So Fever Her W", category: "Wanita" },
-  { value: "oriflame-sublime-nature-tuberose", text: "Oriflame Sublime Nature Tuberose", category: "Wanita" },
-  { value: "paco-rabanne-fame-woman", text: "Paco Rabanne Fame Woman", category: "Wanita" },
-  { value: "paco-rabanne-lady-million", text: "Paco Rabanne Lady Million", category: "Wanita" },
-  { value: "paco-rabanne-olympea-aquas", text: "Paco Rabanne Olympea Aquas", category: "Wanita" },
-  { value: "paco-rabanne-olympea-intense", text: "Paco Rabanne Olympea Intense", category: "Wanita" },
-  { value: "paco-rabanne-olympea-legend", text: "Paco Rabanne Olympea Legend", category: "Wanita" },
-  { value: "paco-rabanne-olympea", text: "Paco Rabanne Olympea", category: "Wanita" },
-  { value: "paco-rabanne-pure-xs-woman", text: "Paco Rabanne Pure XS Woman", category: "Wanita" },
-  { value: "paco-rabanne-ultraviolet-woman", text: "Paco Rabanne Ultraviolet Woman", category: "Wanita" },
-  { value: "paco-rabanne-black-xs", text: "Paco Rabanne Black XS", category: "Wanita" },
-  { value: "paco-rabanne-xs", text: "Paco Rabanne XS", category: "Wanita" },
-  { value: "paris-hilton-can-can-woman", text: "Paris Hilton Can Can Woman", category: "Wanita" },
-  { value: "paris-hilton-dazzle", text: "Paris Hilton Dazzle", category: "Wanita" },
-  { value: "paris-hilton-fairy-dust", text: "Paris Hilton Fairy Dust", category: "Wanita" },
-  { value: "paris-hilton-heiress", text: "Paris Hilton Heiress", category: "Wanita" },
-  { value: "paris-hilton-just-me-woman", text: "Paris Hilton Just Me Woman", category: "Wanita" },
-  { value: "paris-hilton-passport-in-tokyo-woman", text: "Paris Hilton Passport in Tokyo Woman", category: "Wanita" },
-  { value: "paris-hilton-passport-paris-woman", text: "Paris Hilton Passport Paris Woman", category: "Wanita" },
-  { value: "paris-hilton-sirene", text: "Paris Hilton Sirene", category: "Wanita" },
-  { value: "paris-hilton-tease", text: "Paris Hilton Tease", category: "Wanita" },
-  { value: "paris-hilton-woman", text: "Paris Hilton Woman", category: "Wanita" },
-  { value: "pheromone-4-woman-dior-jadore", text: "Pheromone 4 Woman Dior J'Adore", category: "Wanita" },
-  { value: "pheromone-5-woman-bvlgari-omnia-amethys", text: "Pheromone 5 Woman Bvlgari Omnia Amethys", category: "Wanita" },
-  { value: "pheromone-6-woman-victoria-secret-bombshell", text: "Pheromone 6 Woman Victoria Secret Bombshell", category: "Wanita" },
-  { value: "pheromone-7-woman-chanel-chance-tendre", text: "Pheromone 7 Woman Chanel Chance Tendre", category: "Wanita" },
-  { value: "police-to-be-woman", text: "Police To Be Woman", category: "Wanita" },
-  { value: "police-to-be-woman-sweet-girl", text: "Police To Be Woman Sweet Girl", category: "Wanita" },
-  { value: "prada-candy", text: "Prada Candy", category: "Wanita" },
-  { value: "prada-candy-florale", text: "Prada Candy Florale", category: "Wanita" },
-  { value: "prada-candy-sugar-pop", text: "Prada Candy Sugar Pop", category: "Wanita" },
-  { value: "prada-la-femme", text: "Prada La Femme", category: "Wanita" },
-  { value: "prada-parfume", text: "Prada Parfume", category: "Wanita" },
-  { value: "prada-paradoxe-woman", text: "Prada Paradoxe Woman", category: "Wanita" },
-  { value: "ralph-lauren-big-pony-1-red-woman", text: "Ralph Lauren Big Pony 1 Red Woman", category: "Wanita" },
-  { value: "ralph-lauren-big-pony-2-pink-woman", text: "Ralph Lauren Big Pony 2 Pink Woman", category: "Wanita" },
-  { value: "ralph-lauren-romance", text: "Ralph Lauren Romance", category: "Wanita" },
-  { value: "ralph-lauren-romance-pink", text: "Ralph Lauren Romance Pink", category: "Wanita" },
-  { value: "rihanna-rebelle", text: "Rihanna Rebelle", category: "Wanita" },
-  { value: "roberto-cavalli-florence", text: "Roberto Cavalli Florence", category: "Wanita" },
-  { value: "roberto-cavalli-paradise-found-woman", text: "Roberto Cavalli Paradise Found Woman", category: "Wanita" },
-  { value: "roberto-cavalli-serpentine", text: "Roberto Cavalli Serpentine", category: "Wanita" },
-  { value: "salvatore-feragamo-amo-feragamo", text: "Salvatore Feragamo Amo Feragamo", category: "Wanita" },
-  { value: "salvatore-feragamo-amore", text: "Salvatore Feragamo Amore", category: "Wanita" },
-  { value: "salvatore-feragamo-incanto-bliss", text: "Salvatore Feragamo Incanto Bliss", category: "Wanita" },
-  { value: "salvatore-feragamo-incanto-charms", text: "Salvatore Feragamo Incanto Charms", category: "Wanita" },
-  { value: "salvatore-feragamo-incanto-dream", text: "Salvatore Feragamo Incanto Dream", category: "Wanita" },
-  { value: "salvatore-feragamo-incanto-heaven", text: "Salvatore Feragamo Incanto Heaven", category: "Wanita" },
-  { value: "salvatore-feragamo-incanto-shine", text: "Salvatore Feragamo Incanto Shine", category: "Wanita" },
-  { value: "salvatore-feragamo-signorina", text: "Salvatore Feragamo Signorina", category: "Wanita" },
-  { value: "salvatore-feragamo-signorina-eleganza", text: "Salvatore Feragamo Signorina Eleganza", category: "Wanita" },
-  { value: "salvatore-feragamo-signorina-misteriosa", text: "Salvatore Feragamo Signorina Misteriosa", category: "Wanita" },
-  { value: "salvatore-feragamo-signorina-ribelle", text: "Salvatore Feragamo Signorina Ribelle", category: "Wanita" },
-  { value: "salvatore-feragamo-woman", text: "Salvatore Feragamo Woman", category: "Wanita" },
-  { value: "selena-gomez-vivamore", text: "Selena Gomez Vivamore", category: "Wanita" },
-  { value: "shakira-dance-diamonds", text: "Shakira Dance Diamonds", category: "Wanita" },
-  { value: "shakira-pop-rock", text: "Shakira Pop Rock", category: "Wanita" },
-  { value: "swarozski-aura", text: "Swarozski Aura", category: "Wanita" },
-  { value: "sweet-berry", text: "Sweet Berry", category: "Wanita" },
-  { value: "taylor-swift-wonderstruck", text: "Taylor Swift Wonderstruck", category: "Wanita" },
-  { value: "thierry-mugler-alien", text: "Thierry Mugler Alien", category: "Wanita" },
-  { value: "thierry-mugler-angel", text: "Thierry Mugler Angel", category: "Wanita" },
-  { value: "thierry-mugler-aura", text: "Thierry Mugler Aura", category: "Wanita" },
-  { value: "tiffany-co-eau-de-parfume", text: "Tiffany & Co Eau De Parfume", category: "Wanita" },
-  { value: "tiffany-co-love-for-her", text: "Tiffany & Co Love For Her", category: "Wanita" },
-  { value: "tom-ford-black-orchid", text: "Tom Ford Black Orchid", category: "Wanita" },
-  { value: "tom-ford-rose-prick-w", text: "Tom Ford Rose Prick W", category: "Wanita" },
-  { value: "tom-ford-solie-de-italy", text: "Tom Ford Solie de Italy", category: "Wanita" },
-  { value: "tom-ford-vanilla-fetal", text: "Tom Ford Vanilla Fetal", category: "Wanita" },
-  { value: "tommy-girl", text: "Tommy Girl", category: "Wanita" },
-  { value: "tommy-hilfiger-loud-for-her", text: "Tommy Hilfiger Loud For Her", category: "Wanita" },
-  { value: "tommy-hilfiger-peach-blossom", text: "Tommy Hilfiger Peach Blossom", category: "Wanita" },
-  { value: "tommy-hilfiger-true-star", text: "Tommy Hilfiger True Star", category: "Wanita" },
-  { value: "trussardi-delicious-w", text: "Trussardi Delicious W", category: "Wanita" },
-  { value: "valentino-born-in-roma-donna", text: "Valentino Born in Roma Donna", category: "Wanita" },
-  { value: "valentino-donna-rosa-verde", text: "Valentino Donna Rosa Verde", category: "Wanita" },
-  { value: "valentino-donna-woman", text: "Valentino Donna Woman", category: "Wanita" },
-  { value: "versace-bright-crystal-absolut", text: "Versace Bright Crystal Absolut", category: "Wanita" },
-  { value: "versace-bright-crystal", text: "Versace Bright Crystal", category: "Wanita" },
-  { value: "versace-crystal-noir", text: "Versace Crystal Noir", category: "Wanita" },
-  { value: "versace-dylan-purple", text: "Versace Dylan Purple", category: "Wanita" },
-  { value: "versace-eros-pour-femme", text: "Versace Eros Pour Femme", category: "Wanita" },
-  { value: "versace-pink-jeans", text: "Versace Pink Jeans", category: "Wanita" },
-  { value: "versace-versence", text: "Versace Versence", category: "Wanita" },
-  { value: "versace-yellow-diamond", text: "Versace Yellow Diamond", category: "Wanita" },
-  { value: "victoria-secret-bombshell", text: "Victoria Secret Bombshell", category: "Wanita" },
-  { value: "victoria-secret-bombshell-intense", text: "Victoria Secret Bombshell Intense", category: "Wanita" },
-  { value: "victoria-secret-bombshell-paradise", text: "Victoria Secret Bombshell Paradise", category: "Wanita" },
-  { value: "victoria-secret-bombshell-seduction", text: "Victoria Secret Bombshell Seduction", category: "Wanita" },
-  { value: "victoria-secret-bombshell-summer", text: "Victoria Secret Bombshell Summer", category: "Wanita" },
-  { value: "victoria-secret-crush", text: "Victoria Secret Crush", category: "Wanita" },
-  { value: "victoria-secret-dark-angel", text: "Victoria Secret Dark Angel", category: "Wanita" },
-  { value: "victoria-secret-heavenly", text: "Victoria Secret Heavenly", category: "Wanita" },
-  { value: "victoria-secret-love-pink", text: "Victoria Secret Love Pink", category: "Wanita" },
-  { value: "victoria-secret-moon-light-dream", text: "Victoria Secret Moon Light Dream", category: "Wanita" },
-  { value: "victoria-secret-night-angel", text: "Victoria Secret Night Angel", category: "Wanita" },
-  { value: "victoria-secret-noir-tease", text: "Victoria Secret Noir Tease", category: "Wanita" },
-  { value: "victoria-secret-perfume", text: "Victoria Secret Perfume", category: "Wanita" },
-  { value: "victoria-secret-rush", text: "Victoria Secret Rush", category: "Wanita" },
-  { value: "victoria-secret-seduction-dark-orchid", text: "Victoria Secret Seduction Dark Orchid", category: "Wanita" },
-  { value: "victoria-secret-secret-charm", text: "Victoria Secret Secret Charm", category: "Wanita" },
-  { value: "victoria-secret-sexy-little-things-noir-tease", text: "Victoria Secret Sexy Little Things Noir Tease", category: "Wanita" },
-  { value: "victoria-secret-so-sexy", text: "Victoria Secret So Sexy", category: "Wanita" },
-  { value: "victoria-secret-starlit-wish", text: "Victoria Secret Starlit Wish", category: "Wanita" },
-  { value: "victoria-secret-sugar-high", text: "Victoria Secret Sugar High", category: "Wanita" },
-  { value: "victoria-secret-temptation", text: "Victoria Secret Temptation", category: "Wanita" },
-  { value: "victoria-secret-very-sexy", text: "Victoria Secret Very Sexy", category: "Wanita" },
-  { value: "victoria-secret-victoria", text: "Victoria Secret Victoria", category: "Wanita" },
-  { value: "victoria-secret-wicked", text: "Victoria Secret Wicked", category: "Wanita" },
-  { value: "victoria-secret-wild-one", text: "Victoria Secret Wild One", category: "Wanita" },
-  { value: "ysl-black-opium-le-parfume", text: "YSL Black Opium Le Parfume", category: "Wanita" },
-  { value: "ysl-black-opium", text: "YSL Black Opium", category: "Wanita" },
-  { value: "ysl-elle", text: "YSL Elle", category: "Wanita" },
-  { value: "ysl-libre-le-parfume", text: "YSL Libre Le Parfume", category: "Wanita" },
-  { value: "ysl-libre", text: "YSL Libre", category: "Wanita" },
-  { value: "ysl-manifesto", text: "YSL Manifesto", category: "Wanita" },
-  { value: "ysl-opium", text: "YSL Opium", category: "Wanita" },
-  { value: "ysl-paris", text: "YSL Paris", category: "Wanita" },
-  { value: "zara-applejuice-women", text: "Zara Applejuice Women", category: "Wanita" },
-  { value: "zara-gardenia", text: "Zara Gardenia", category: "Wanita" },
-  { value: "zara-go-fruit-women", text: "Zara Go Fruit Women", category: "Wanita" },
-  { value: "zara-nuit", text: "Zara Nuit", category: "Wanita" },
-  { value: "zara-red-vanilla", text: "Zara Red Vanilla", category: "Wanita" },
-  { value: "zara-twilight-mauve-w", text: "Zara Twilight Mauve W", category: "Wanita" },
-  { value: "zara-wonder-rose", text: "Zara Wonder Rose", category: "Wanita" },
-  { value: "zara-woman-gourmand-addict-2018", text: "Zara Woman Gourmand Addict 2018", category: "Wanita" },
-                // --- Contoh Parfum Unisex (Silakan tambahkan data lengkap Anda di sini) ---
-               { value: "aether-suprae", text: "Aether Suprae", category: "Unisex" },
-  { value: "alchemist-garden-moonlight-serenade", text: "Alchemist Garden Moonlight Serenade", category: "Unisex" },
-  { value: "alchemist-garden-the-last-day-of-summer", text: "Alchemist Garden The Last Day of Summer", category: "Unisex" },
-  { value: "body-shop-macca", text: "Body Shop Macca", category: "Unisex" },
-  { value: "byredo-gypsy-water", text: "Byredo Gypsy Water", category: "Unisex" },
-  { value: "byredo-mojave-ghost", text: "Byredo Mojave Ghost", category: "Unisex" },
-  { value: "bvlgai-eau-parfumee-au-the-vert", text: "Bvlgai Eau Parfumee Au the Vert", category: "Unisex" },
-  { value: "bvlgai-omnia-crystalline", text: "Bvlgai Omnia Crystalline", category: "Unisex" },
-  { value: "chanel-gabrielle", text: "Chanel Gabrielle", category: "Unisex" },
-  { value: "chanel-no19-poudre", text: "Chanel No.19 Poudre", category: "Unisex" },
-  { value: "ck-all", text: "CK All", category: "Unisex" },
-  { value: "ck-be", text: "CK Be", category: "Unisex" },
-  { value: "ck-everyone", text: "CK Everyone", category: "Unisex" },
-  { value: "creed-silver-mountain-water", text: "Creed Silver Mountain Water", category: "Unisex" },
-  { value: "diptyque-do-son", text: "Diptyque Do Son", category: "Unisex" },
-  { value: "diptyque-philolys", text: "Diptyque Philolys", category: "Unisex" },
-  { value: "frederic-malle-musc-ravageur", text: "Frederic Malle Musc Ravageur", category: "Unisex" },
-  { value: "jo-malone-basil-neroli", text: "Jo Malone Basil Neroli", category: "Unisex" },
-  { value: "jo-malone-black-cedarwood-juniper", text: "Jo Malone Black Cedarwood & Juniper", category: "Unisex" },
-  { value: "jo-malone-black-vetiver-cafe", text: "Jo Malone Black Vetiver Cafe", category: "Unisex" },
-  { value: "jo-malone-blackberry-bay", text: "Jo Malone Blackberry & Bay", category: "Unisex" },
-  { value: "jo-malone-english-pear-freesia", text: "Jo Malone English Pear & Freesia", category: "Unisex" },
-  { value: "jo-malone-lime-basil-mandarin", text: "Jo Malone Lime Basil & Mandarin", category: "Unisex" },
-  { value: "jo-malone-nectarine-blossom-honey", text: "Jo Malone Nectarine Blossom & Honey", category: "Unisex" },
-  { value: "jo-malone-osmanthus-blossom-cologne-2023", text: "Jo Malone Osmanthus Blossom Cologne 2023", category: "Unisex" },
-  { value: "jo-malone-orange-blossom", text: "Jo Malone Orange Blossom", category: "Unisex" },
-  { value: "jo-malone-wood-sage-sea-salt", text: "Jo Malone Wood Sage & Sea Salt", category: "Unisex" },
-  { value: "jomalone-sakura-cherry-blossom-unisek", text: "Jomalone Sakura Cherry Blossom Unisek", category: "Unisex" },
-  { value: "killian-back-to-black", text: "Killian Back to Black", category: "Unisex" },
-  { value: "killian-black-phantom", text: "Killian Black Phantom", category: "Unisex" },
-  { value: "killian-love-dont-be-shy", text: "Killian Love Don't Be Shy", category: "Unisex" },
-  { value: "killian-straight-to-heaven-white-cristal", text: "Killian Straight to Heaven White Cristal", category: "Unisex" },
-  { value: "le-labo-another-13", text: "Le Labo Another 13", category: "Unisex" },
-  { value: "le-labo-santal-33", text: "Le Labo Santal 33", category: "Unisex" },
-  { value: "maison-francis-kurkdjian-baccarat-rouge-540-edp", text: "Maison Francis Kurkdjian Baccarat Rouge 540 EDP", category: "Unisex" },
-  { value: "maison-francis-kurkdjian-baccarat-rouge-540-extrait", text: "Maison Francis Kurkdjian Baccarat Rouge 540 Extrait", category: "Unisex" },
-  { value: "maison-francis-kurkdjian-gentle-fluidity-gold", text: "Maison Francis Kurkdjian Gentle Fluidity Gold", category: "Unisex" },
-  { value: "maison-francis-kurkdjian-oud-satin-mood", text: "Maison Francis Kurkdjian Oud Satin Mood", category: "Unisex" },
-  { value: "maison-francis-kurkdjian-aqua-universalis", text: "Maison Francis Kurkdjian Aqua Universalis", category: "Unisex" },
-  { value: "maison-margiela-by-the-fireplace", text: "Maison Margiela By The Fireplace", category: "Unisex" },
-  { value: "maison-margiela-lazy-sunday-morning", text: "Maison Margiela Lazy Sunday Morning", category: "Unisex" },
-  { value: "maison-margiela-replica-beach-walk", text: "Maison Margiela Replica Beach Walk", category: "Unisex" },
-  { value: "memo-irish-leather", text: "Memo Irish Leather", category: "Unisex" },
-  { value: "mickey-minnie", text: "Mickey Minnie", category: "Unisex" },
-  { value: "montale-intense-cafe", text: "Montale Intense Cafe", category: "Unisex" },
-  { value: "montale-roses-musk", text: "Montale Roses Musk", category: "Unisex" },
-  { value: "narciso-rodriguez-for-her-musc-noir-rose", text: "Narciso Rodriguez For Her Musc Noir Rose", category: "Unisex" },
-  { value: "oriflame-musk-blend-uniseks", text: "Oriflame Musk Blend Uniseks", category: "Unisex" },
-  { value: "perfume-gell", text: "Perfume Gell", category: "Unisex" },
-  { value: "pheromone-8-unisex-baccarat-rouge-540", text: "Pheromone 8 Unisex Baccarat Rouge 540", category: "Unisex" },
-  { value: "pheromone-9-unisex-jo-malone-wood-sage-sea-salt", text: "Pheromone 9 Unisex Jo Malone Wood Sage & Sea Salt", category: "Unisex" },
-  { value: "police-shock-in-scent", text: "Police Shock in Scent", category: "Unisex" },
-  { value: "prada-amber", text: "Prada Amber", category: "Unisex" },
-  { value: "sospiro-erba-pura", text: "Sospiro Erba Pura", category: "Unisex" },
-  { value: "swiss-arabian-shaghaf-oud", text: "Swiss Arabian Shaghaf Oud", category: "Unisex" },
-  { value: "tiziana-terenzi-kirke", text: "Tiziana Terenzi Kirke", category: "Unisex" },
-  { value: "tom-ford-fucking-fabulous", text: "Tom Ford Fucking Fabulous", category: "Unisex" },
-  { value: "tom-ford-lost-cherry", text: "Tom Ford Lost Cherry", category: "Unisex" },
-  { value: "tom-ford-neroli-portofino", text: "Tom Ford Neroli Portofino", category: "Unisex" },
-  { value: "tom-ford-soleil-blanc", text: "Tom Ford Soleil Blanc", category: "Unisex" },
-  { value: "tom-ford-tobac-vanile", text: "Tom Ford Tobac Vanile", category: "Unisex" },
-  { value: "xeroff-casamorati-lire", text: "Xeroff Casamorati Lire", category: "Unisex" },
-  { value: "zara-amazonia-summer", text: "Zara Amazonia Summer", category: "Unisex" },
-  { value: "zara-ebony-wood", text: "Zara Ebony Wood", category: "Unisex" },
-  { value: "zara-forest", text: "Zara Forest", category: "Unisex" },
-  { value: "zara-gog-fruit", text: "Zara Gog Fruit", category: "Unisex" },
-  { value: "zara-vetiver-pamplemousse", text: "Zara Vetiver Pamplemousse", category: "Unisex" },
-  { value: "zara-white-light", text: "Zara White Light", category: "Unisex" },
-  { value: "zarkoperfume-molecule-c-19-the-beach", text: "Zarkoperfume Molecule C-19 The Beach", category: "Unisex" },
-  { value: "zwitsal", text: "Zwitsal", category: "Unisex" },
-            
-                // --- Contoh Parfum Pasangan (Silakan tambahkan data lengkap Anda di sini) ---
-                { value: "ck-one", text: "CK One", category: "Pasangan" }, // Default ke Pasangan jika ada versi pria dan wanita
-  { value: "ck-one-1994", text: "CK One 1994", category: "Pasangan" },
-  { value: "ck-one-summer", text: "CK One Summer", category: "Pasangan" },
-  { value: "d&g-light-blue-italian-love", text: "D&G Light Blue Italian Love", category: "Pasangan" },
-  { value: "d&g-light-blue-forever-for-her-pour-homme", text: "D&G Light Blue Forever For Her & Pour Homme", category: "Pasangan" },
-  { value: "d&g-the-one-man-d&g-the-one-woman", text: "D&G The One Man & D&G The One Woman", category: "Pasangan" },
-  { value: "d&g-the-one-collector-man-d&g-the-one-collector-woman", text: "D&G The One Collector Man & D&G The One Collector Woman", category: "Pasangan" },
-  { value: "d&g-truth-man-d&g-truth-woman", text: "D&G Truth Man & D&G Truth Woman", category: "Pasangan" },
-  { value: "clinique-happy-man-clinique-happy-woman", text: "Clinique Happy Man & Clinique Happy Woman", category: "Pasangan" },
-  { value: "ck-truth-man-ck-truth-woman", text: "CK Truth Man & CK Truth Woman", category: "Pasangan" },
-  { value: "ck-one-shock-him-ck-one-shock-her", text: "CK One Shock Him & CK One Shock Her", category: "Pasangan" },
-  { value: "ck-eternity-annyversary-25-th-edition-man-woman", text: "CK Eternity Annyversary 25 Th Edition Man & Woman", category: "Pasangan" },
-  { value: "ck-in-2-u-him-for-her", text: "CK In 2 U Him & For Her", category: "Pasangan" },
-  { value: "d&g-light-blue-man-woman", text: "D&G Light Blue Man & Woman", category: "Pasangan" },
-  { value: "estee-lauder-pleasure-man-woman", text: "Estee Lauder Pleasure Man & Woman", category: "Pasangan" },
-  { value: "giorgio-armani-aqua-digio-man-woman", text: "Giorgio Armani Aqua Digio Man & Woman", category: "Pasangan" },
-  { value: "giorgio-armani-mania-man-woman", text: "Giorgio Armani Mania Man & Woman", category: "Pasangan" },
-  { value: "gucci-guilty-man-woman", text: "Gucci Guilty Man & Woman", category: "Pasangan" },
-  { value: "gucci-type-ii", text: "Gucci Type II", category: "Pasangan" },
-  { value: "guess-man-woman", text: "Guess Man & Woman", category: "Pasangan" },
-  { value: "hugo-boss-orange-man-woman", text: "Hugo Boss Orange Man & Woman", category: "Pasangan" },
-  { value: "hugo-boss-red-man-woman", text: "Hugo Boss Red Man & Woman", category: "Pasangan" },
-  { value: "hugo-boss-the-scent-man-woman", text: "Hugo Boss The Scent Man & Woman", category: "Pasangan" },
-  { value: "mont-blanc-individual-man-woman", text: "Mont Blanc Individual Man & Woman", category: "Pasangan" },
-  { value: "escad-magnetism-man-woman", text: "Escad Magnetism Man & Woman", category: "Pasangan" },
-  { value: "ralph-lauren-big-pony-1-blue-man-ralph-lauren-big-pony-1-red-woman", text: "Ralph Lauren Big Pony 1 Blue Man & Ralph Lauren Big Pony 1 Red Woman", category: "Pasangan" },
-  { value: "salvatore-feragamo-incanto-bliss-incanto-heaven", text: "Salvatore Feragamo Incanto Bliss & Incanto Heaven", category: "Pasangan" },
-  { value: "tiffany-co-love-for-him-for-her", text: "Tiffany & Co Love For Him & For Her", category: "Pasangan" },
-  { value: "tommy-hilfiger-loud-for-him-for-her", text: "Tommy Hilfiger Loud For Him & For Her", category: "Pasangan" },
-  { value: "versace-eros-man-versace-eros-pour-femme", text: "Versace Eros Man & Versace Eros Pour Femme", category: "Pasangan" }
-            ];
+  {
+    "value": "abercrombie-fierce-confidence-man",
+    "text": "Abercrombie Fierce Confidence Man",
+    "category": "Pria"
+  },
+  {
+    "value": "adidas-adventure-explorer",
+    "text": "Adidas Adventure Explorer",
+    "category": "Pria"
+  },
+  {
+    "value": "adidas-deep-energi",
+    "text": "Adidas Deep Energi",
+    "category": "Pria"
+  },
+  {
+    "value": "adidas-fair-play-special-2008",
+    "text": "Adidas Fair Play Special 2008",
+    "category": "Pria"
+  },
+  {
+    "value": "adidas-pure-game",
+    "text": "Adidas Pure Game",
+    "category": "Pria"
+  },
+  {
+    "value": "adidas-team-force",
+    "text": "Adidas Team Force",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-black-man",
+    "text": "Aigner Black Man",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-clear-day-man",
+    "text": "Aigner Clear Day Man",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-evolution-man",
+    "text": "Aigner Evolution Man",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-in-leather-man",
+    "text": "Aigner In Leather Man",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-man-two",
+    "text": "Aigner Man Two",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-no-1",
+    "text": "Aigner No 1",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-no-1-sport",
+    "text": "Aigner No 1 Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-suede-edition-man",
+    "text": "Aigner Suede Edition Man",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-white-man",
+    "text": "Aigner White Man",
+    "category": "Pria"
+  },
+  {
+    "value": "aigner-x-limited",
+    "text": "Aigner X Limited",
+    "category": "Pria"
+  },
+  {
+    "value": "angel-scheleser-man",
+    "text": "Angel Scheleser Man",
+    "category": "Pria"
+  },
+  {
+    "value": "antonio-banderas-man",
+    "text": "Antonio Banderas Man",
+    "category": "Pria"
+  },
+  {
+    "value": "armaf-club-de-nuit-intense-man",
+    "text": "Armaf Club de Nuit Intense Man",
+    "category": "Pria"
+  },
+  {
+    "value": "azzaro-chrome",
+    "text": "Azzaro Chrome",
+    "category": "Pria"
+  },
+  {
+    "value": "azzaro-desible",
+    "text": "Azzaro Desible",
+    "category": "Pria"
+  },
+  {
+    "value": "azzaro-the-most-wanted",
+    "text": "Azzaro The Most Wanted",
+    "category": "Pria"
+  },
+  {
+    "value": "beneton-cold",
+    "text": "Beneton Cold",
+    "category": "Pria"
+  },
+  {
+    "value": "beneton-sport",
+    "text": "Beneton Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "black-kennet-cole-man",
+    "text": "Black Kennet Cole Man",
+    "category": "Pria"
+  },
+  {
+    "value": "body-shop-kistna",
+    "text": "Body Shop Kistna",
+    "category": "Pria"
+  },
+  {
+    "value": "body-shop-white-musk-man",
+    "text": "Body Shop White Musk Man",
+    "category": "Pria"
+  },
+  {
+    "value": "burberry-brit-for-man",
+    "text": "Burberry Brit for Man",
+    "category": "Pria"
+  },
+  {
+    "value": "burberry-classic-man",
+    "text": "Burberry Classic Man",
+    "category": "Pria"
+  },
+  {
+    "value": "burberry-london-for-man",
+    "text": "Burberry London For Man",
+    "category": "Pria"
+  },
+  {
+    "value": "burberry-mr-burberry",
+    "text": "Burberry Mr Burberry",
+    "category": "Pria"
+  },
+  {
+    "value": "burberry-summer-man",
+    "text": "Burberry Summer Man",
+    "category": "Pria"
+  },
+  {
+    "value": "burberry-the-beat-for-man",
+    "text": "Burberry The Beat for Man",
+    "category": "Pria"
+  },
+  {
+    "value": "burberry-weekend-man",
+    "text": "Burberry Weekend Man",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-aqua",
+    "text": "Bvlgari Aqua",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-aqua-amara",
+    "text": "Bvlgari Aqua Amara",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-aqua-atlantique",
+    "text": "Bvlgari Aqua Atlantique",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-aqua-marine",
+    "text": "Bvlgari Aqua Marine",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-aqua-marine-tonic",
+    "text": "Bvlgari Aqua Marine Tonic",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-black",
+    "text": "Bvlgari Black",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-blv-man",
+    "text": "Bvlgari Blv Man",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-blv-note-pour-home",
+    "text": "Bvlgari Blv Note Pour Home",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-extreme",
+    "text": "Bvlgari Extreme",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-man-2010",
+    "text": "Bvlgari Man 2010",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-man-in-black",
+    "text": "Bvlgari Man in Black",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-orient-man-in-black",
+    "text": "Bvlgari Orient Man in Black",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-pour-homme-soir",
+    "text": "Bvlgari Pour Homme Soir",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-rain-man-essense-man",
+    "text": "Bvlgari Rain Man Essense Man",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-white-pour-homme",
+    "text": "Bvlgari White Pour Homme",
+    "category": "Pria"
+  },
+  {
+    "value": "bvlgari-wood-essence",
+    "text": "Bvlgari Wood Essence",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-h2o-man",
+    "text": "Carolina Herrera 212 H2O Man",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-heroes-2021",
+    "text": "Carolina Herrera 212 Heroes 2021",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-heroes-forever",
+    "text": "Carolina Herrera 212 Heroes Forever",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-man",
+    "text": "Carolina Herrera 212 Man",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-sexy-man",
+    "text": "Carolina Herrera 212 Sexy Man",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-surf-man",
+    "text": "Carolina Herrera 212 Surf Man",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-vip-black-man",
+    "text": "Carolina Herrera 212 VIP Black Man",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-vip-black-own-the-party",
+    "text": "Carolina Herrera 212 VIP Black Own the Party",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-vip-man",
+    "text": "Carolina Herrera 212 VIP Man",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-vip-man-party-fever",
+    "text": "Carolina Herrera 212 VIP Man Party Fever",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-vip-wins-men",
+    "text": "Carolina Herrera 212 VIP Wins Men",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-212-wins-men",
+    "text": "Carolina Herrera 212 Wins Men",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-aqua-for-man",
+    "text": "Carolina Herrera Aqua for Man",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-bad-boy-extreme",
+    "text": "Carolina Herrera Bad Boy Extreme",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-bad-boy",
+    "text": "Carolina Herrera Bad Boy",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-chic-man",
+    "text": "Carolina Herrera Chic Man",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-kings",
+    "text": "Carolina Herrera Kings",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-man-sport",
+    "text": "Carolina Herrera Man Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-marine",
+    "text": "Carolina Herrera Marine",
+    "category": "Pria"
+  },
+  {
+    "value": "carolina-herrera-sport-man",
+    "text": "Carolina Herrera Sport Man",
+    "category": "Pria"
+  },
+  {
+    "value": "chanel-allure-home-sport-eau-extreme",
+    "text": "Chanel Allure Home Sport Eau Extreme",
+    "category": "Pria"
+  },
+  {
+    "value": "chanel-allure-homme-sport",
+    "text": "Chanel Allure Homme Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "chanel-allure-man",
+    "text": "Chanel Allure Man",
+    "category": "Pria"
+  },
+  {
+    "value": "chanel-bleu-de-chanel-edp",
+    "text": "Chanel Bleu de Chanel EDP",
+    "category": "Pria"
+  },
+  {
+    "value": "chanel-blue",
+    "text": "Chanel Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "chopard-mobile-vetiver",
+    "text": "Chopard Mobile Vetiver",
+    "category": "Pria"
+  },
+  {
+    "value": "chopart-miglia-1000",
+    "text": "Chopart Miglia 1000",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-audgier-villain",
+    "text": "Christian Audgier Villain",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-dior-fahrenheit",
+    "text": "Christian Dior Fahrenheit",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-dior-fahrenheit-absolute",
+    "text": "Christian Dior Fahrenheit Absolute",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-dior-higher",
+    "text": "Christian Dior Higher",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-dior-homme-intens",
+    "text": "Christian Dior Homme Intense",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-dior-homme-sport",
+    "text": "Christian Dior Homme Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-dior-sauvage",
+    "text": "Christian Dior Sauvage",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-dior-sauvage-exilir",
+    "text": "Christian Dior Sauvage Elixir",
+    "category": "Pria"
+  },
+  {
+    "value": "christian-ronaldo-legachy-sheer-seven",
+    "text": "Christian Ronaldo Legachy Sheer Seven",
+    "category": "Pria"
+  },
+  {
+    "value": "cigar",
+    "text": "Cigar",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-crave-for-man",
+    "text": "Calvin Klein Crave for Man",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-electric",
+    "text": "Calvin Klein Electric",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-encounter-him",
+    "text": "Calvin Klein Encounter Him",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-escape-for-man",
+    "text": "Calvin Klein Escape for Man",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-eternity-air-male",
+    "text": "Calvin Klein Eternity Air Male",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-eternity-annyversary-25-th-edition-man",
+    "text": "Calvin Klein Eternity Annyversary 25 Th Edition Man",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-eternity-aqua",
+    "text": "Calvin Klein Eternity Aqua",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-eternity-man",
+    "text": "Calvin Klein Eternity Man",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-eternity-now-man",
+    "text": "Calvin Klein Eternity Now Man",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-eternity-summer-2014-man",
+    "text": "Calvin Klein Eternity Summer 2014 Man",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-euphoria-deep",
+    "text": "Calvin Klein Euphoria Deep",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-euphoria-man",
+    "text": "Calvin Klein Euphoria Man",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-free",
+    "text": "Calvin Klein Free",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-free-blue",
+    "text": "Calvin Klein Free Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-in-2-u-heat-him",
+    "text": "Calvin Klein In 2 U Heat Him",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-in-2-u-him",
+    "text": "Calvin Klein In 2 U Him",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-obsession-man",
+    "text": "Calvin Klein Obsession Man",
+    "category": "Pria"
+  },
+  {
+    "value": "calvin-klein-one-shock-him",
+    "text": "Calvin Klein One Shock Him",
+    "category": "Pria"
+  },
+  {
+    "value": "coach-man-edp",
+    "text": "Coach Man EDP",
+    "category": "Pria"
+  },
+  {
+    "value": "cr-7",
+    "text": "CR 7",
+    "category": "Pria"
+  },
+  {
+    "value": "cr-7-legacy",
+    "text": "CR 7 Legacy",
+    "category": "Pria"
+  },
+  {
+    "value": "creed-aventus",
+    "text": "Creed Aventus",
+    "category": "Pria"
+  },
+  {
+    "value": "david-beckham-intimately-her",
+    "text": "David Beckham Intimately Her",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-cool-water-games",
+    "text": "Davidoff Cool Water Games",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-cool-water-man",
+    "text": "Davidoff Cool Water Man",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-cool-water-reborn",
+    "text": "Davidoff Cool Water Reborn",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-cool-water-wave",
+    "text": "Davidoff Cool Water Wave",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-coolwater-night-dive-man",
+    "text": "Davidoff Coolwater Night Dive Man",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-hot-water-night",
+    "text": "Davidoff Hot Water Night",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-run-wild-edt",
+    "text": "Davidoff Run Wild EDT",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-run-wild-for-him",
+    "text": "Davidoff Run Wild For Him",
+    "category": "Pria"
+  },
+  {
+    "value": "davidoff-silver-shadow",
+    "text": "Davidoff Silver Shadow",
+    "category": "Pria"
+  },
+  {
+    "value": "de-marly-pegasus-parfume-for-man",
+    "text": "De Marly Pegasus Parfume for Man",
+    "category": "Pria"
+  },
+  {
+    "value": "dear-boyfriend-aviator-black-suit",
+    "text": "Dear Boyfriend Aviator Black Suit",
+    "category": "Pria"
+  },
+  {
+    "value": "diesel-bad-for-man",
+    "text": "Diesel Bad for Man",
+    "category": "Pria"
+  },
+  {
+    "value": "diesel-only-the-brave",
+    "text": "Diesel Only the Brave",
+    "category": "Pria"
+  },
+  {
+    "value": "diesel-only-the-brave-toto",
+    "text": "Diesel Only the Brave Toto",
+    "category": "Pria"
+  },
+  {
+    "value": "dkny-be-delicious-man",
+    "text": "DKNY Be Delicious Man",
+    "category": "Pria"
+  },
+  {
+    "value": "drakar-noir-guy-laroche",
+    "text": "Drakar Noir Guy Laroche",
+    "category": "Pria"
+  },
+  {
+    "value": "dsquared2-green-wood-2019",
+    "text": "Dsquared2 Green Wood 2019",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-black",
+    "text": "Dunhill Black",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-blue",
+    "text": "Dunhill Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-custom-man",
+    "text": "Dunhill Custom Man",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-fresh-man",
+    "text": "Dunhill Fresh Man",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-icon",
+    "text": "Dunhill Icon",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-london-man",
+    "text": "Dunhill London Man",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-pursuit",
+    "text": "Dunhill Pursuit",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-red",
+    "text": "Dunhill Red",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-signature-collection-british-leather",
+    "text": "Dunhill Signature Collection British Leather",
+    "category": "Pria"
+  },
+  {
+    "value": "dunhill-x-centric",
+    "text": "Dunhill X Centric",
+    "category": "Pria"
+  },
+  {
+    "value": "ermengildo-zegna-essence-florentine-iris",
+    "text": "Ermengildo Zegna Essence Florentine Iris",
+    "category": "Pria"
+  },
+  {
+    "value": "esprit-life-male",
+    "text": "Esprit Life - Male",
+    "category": "Pria"
+  },
+  {
+    "value": "escad-magnetism-man",
+    "text": "Escad Magnetism Man",
+    "category": "Pria"
+  },
+  {
+    "value": "escad-moon-sparkle-man",
+    "text": "Escad Moon Sparkle Man",
+    "category": "Pria"
+  },
+  {
+    "value": "escad-pour-home-sport",
+    "text": "Escad Pour Home Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "escad-sentimen-man",
+    "text": "Escad Sentimen Man",
+    "category": "Pria"
+  },
+  {
+    "value": "estee-lauder-pleasure-man",
+    "text": "Estee Lauder Pleasure Man",
+    "category": "Pria"
+  },
+  {
+    "value": "ferrari-black",
+    "text": "Ferrari Black",
+    "category": "Pria"
+  },
+  {
+    "value": "ferrari-black-new",
+    "text": "Ferrari Black New",
+    "category": "Pria"
+  },
+  {
+    "value": "ferrari-black-shine",
+    "text": "Ferrari Black Shine",
+    "category": "Pria"
+  },
+  {
+    "value": "ferrari-leather-essence-man",
+    "text": "Ferrari Leather Essence Man",
+    "category": "Pria"
+  },
+  {
+    "value": "ferrari-red",
+    "text": "Ferrari Red",
+    "category": "Pria"
+  },
+  {
+    "value": "ferrari-scuderia-forte-2017",
+    "text": "Ferrari Scuderia Forte 2017",
+    "category": "Pria"
+  },
+  {
+    "value": "ferrari-scuderia",
+    "text": "Ferrari Scuderia",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-aqua-digio-essenza",
+    "text": "Giorgio Armani Aqua Digio Essenza",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-aqua-digio",
+    "text": "Giorgio Armani Aqua Digio",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-aquadigio-absolute",
+    "text": "Giorgio Armani Aquadigio Absolute",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-aquadigio-fraich",
+    "text": "Giorgio Armani Aquadigio Fraich",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-aquadigio-man",
+    "text": "Giorgio Armani Aquadigio Man",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-aquadigio-profondo-man",
+    "text": "Giorgio Armani Aquadigio Profondo Man",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-attitude",
+    "text": "Giorgio Armani Attitude",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-basi-in-blue-man",
+    "text": "Giorgio Armani Basi in Blue Man",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-black-code",
+    "text": "Giorgio Armani Black Code",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-city-glam-man",
+    "text": "Giorgio Armani City Glam Man",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-code-profumo",
+    "text": "Giorgio Armani Code Profumo",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-code-sport",
+    "text": "Giorgio Armani Code Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-code-summer-2010-pour-homme",
+    "text": "Giorgio Armani Code Summer 2010 Pour Homme",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-emporio-white-for-men",
+    "text": "Giorgio Armani Emporio White For Men",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-mania-man",
+    "text": "Giorgio Armani Mania Man",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-my-way-man",
+    "text": "Giorgio Armani My Way Man",
+    "category": "Pria"
+  },
+  {
+    "value": "giorgio-armani-sensi-man",
+    "text": "Giorgio Armani Sensi Man",
+    "category": "Pria"
+  },
+  {
+    "value": "givenchy-gentleman-edp-reserve-pri",
+    "text": "Givenchy Gentleman EDP Reserve Privé",
+    "category": "Pria"
+  },
+  {
+    "value": "givenchy-gentleman-society",
+    "text": "Givenchy Gentleman Society",
+    "category": "Pria"
+  },
+  {
+    "value": "givenchy-gentleman",
+    "text": "Givenchy Gentleman",
+    "category": "Pria"
+  },
+  {
+    "value": "green-wood",
+    "text": "Green Wood",
+    "category": "Pria"
+  },
+  {
+    "value": "gucci-guilty-black-man",
+    "text": "Gucci Guilty Black Man",
+    "category": "Pria"
+  },
+  {
+    "value": "gucci-guilty-pour-homme-2022",
+    "text": "Gucci Guilty Pour Homme 2022",
+    "category": "Pria"
+  },
+  {
+    "value": "gucci-rush-man",
+    "text": "Gucci Rush Man",
+    "category": "Pria"
+  },
+  {
+    "value": "gucci-sport-man",
+    "text": "Gucci Sport Man",
+    "category": "Pria"
+  },
+  {
+    "value": "guess-man",
+    "text": "Guess Man",
+    "category": "Pria"
+  },
+  {
+    "value": "guess-seductive-noir-male",
+    "text": "Guess Seductive Noir Male",
+    "category": "Pria"
+  },
+  {
+    "value": "hermes-h24-for-men",
+    "text": "Hermes H24 For Men",
+    "category": "Pria"
+  },
+  {
+    "value": "honor-amoug-man",
+    "text": "Honor Amoug Man",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-army-man",
+    "text": "Hugo Boss Army Man",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-bottle",
+    "text": "Hugo Boss Bottle",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-bottle-night",
+    "text": "Hugo Boss Bottle Night",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-bottle-tonic",
+    "text": "Hugo Boss Bottle Tonic",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-bottled",
+    "text": "Hugo Boss Bottled",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-bottled-infinite",
+    "text": "Hugo Boss Bottled Infinite",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-bottled-oud",
+    "text": "Hugo Boss Bottled Oud",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-dark-blue",
+    "text": "Hugo Boss Dark Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-elements",
+    "text": "Hugo Boss Elements",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-energize",
+    "text": "Hugo Boss Energize",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-extreme",
+    "text": "Hugo Boss Extreme",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-iced",
+    "text": "Hugo Boss Iced",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-in-motion",
+    "text": "Hugo Boss In Motion",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-in-motion-black",
+    "text": "Hugo Boss In Motion Black",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-in-motion-blue",
+    "text": "Hugo Boss In Motion Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-in-motion-electric",
+    "text": "Hugo Boss In Motion Electric",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-in-motion-green",
+    "text": "Hugo Boss In Motion Green",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-in-motion-iv",
+    "text": "Hugo Boss In Motion IV",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-now",
+    "text": "Hugo Boss Now",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-orange-man",
+    "text": "Hugo Boss Orange Man",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-pure",
+    "text": "Hugo Boss Pure",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-red-man",
+    "text": "Hugo Boss Red Man",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-selection",
+    "text": "Hugo Boss Selection",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-soul",
+    "text": "Hugo Boss Soul",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-strong",
+    "text": "Hugo Boss Strong",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-the-scent-for-him-magnetic",
+    "text": "Hugo Boss The Scent For Him Magnetic",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-the-scent-intense-man",
+    "text": "Hugo Boss The Scent Intense Man",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-the-scent-man",
+    "text": "Hugo Boss The Scent Man",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-the-scent-prive-accord",
+    "text": "Hugo Boss The Scent Prive Accord",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-urban-journey-2018",
+    "text": "Hugo Boss Urban Journey 2018",
+    "category": "Pria"
+  },
+  {
+    "value": "hugo-boss-xy-for-him",
+    "text": "Hugo Boss Xy For Him",
+    "category": "Pria"
+  },
+  {
+    "value": "ice-mint",
+    "text": "Ice Mint",
+    "category": "Pria"
+  },
+  {
+    "value": "iron-man-pure-sport",
+    "text": "Iron Man Pure Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "issey-miyake-man",
+    "text": "Issey Miyake Man",
+    "category": "Pria"
+  },
+  {
+    "value": "issey-miyake-fusion-d-issey",
+    "text": "Issey Miyake Fusion D'issey",
+    "category": "Pria"
+  },
+  {
+    "value": "issey-miyake-l-eau-bleu-man",
+    "text": "Issey Miyake L'Eau Bleu Man",
+    "category": "Pria"
+  },
+  {
+    "value": "issey-miyake-l-eau-de-issey-pour-homme",
+    "text": "Issey Miyake L'Eau De Issey Pour Homme",
+    "category": "Pria"
+  },
+  {
+    "value": "joop-man",
+    "text": "Joop Man",
+    "category": "Pria"
+  },
+  {
+    "value": "jean-paul-gaultier-2-gaultier",
+    "text": "Jean Paul Gaultier 2 Gaultier",
+    "category": "Pria"
+  },
+  {
+    "value": "jean-paul-gaultier-le-male-elixir-for-man",
+    "text": "Jean Paul Gaultier Le Male Elixir For Man",
+    "category": "Pria"
+  },
+  {
+    "value": "jean-paul-gaultier-le-male-essence-man",
+    "text": "Jean Paul Gaultier Le Male Essence Man",
+    "category": "Pria"
+  },
+  {
+    "value": "jean-paul-gaultier-lemal-summer-2010",
+    "text": "Jean Paul Gaultier Lemal Summer 2010",
+    "category": "Pria"
+  },
+  {
+    "value": "jean-paul-gaultier-man",
+    "text": "Jean Paul Gaultier Man",
+    "category": "Pria"
+  },
+  {
+    "value": "jean-paul-gaultier-scandal-pour-homme",
+    "text": "Jean Paul Gaultier Scandal Pour Homme",
+    "category": "Pria"
+  },
+  {
+    "value": "jean-paul-gaultier-ultra-male",
+    "text": "Jean Paul Gaultier Ultra Male",
+    "category": "Pria"
+  },
+  {
+    "value": "kenzo-for-man",
+    "text": "Kenzo For Man",
+    "category": "Pria"
+  },
+  {
+    "value": "kenzo-l-eau-2-kenzo-pour-homme",
+    "text": "Kenzo L'Eau 2 Kenzo Pour Homme",
+    "category": "Pria"
+  },
+  {
+    "value": "kenzo-l-eaupar-man",
+    "text": "Kenzo L'Eaupar Man",
+    "category": "Pria"
+  },
+  {
+    "value": "kenzo-man-2010",
+    "text": "Kenzo Man 2010",
+    "category": "Pria"
+  },
+  {
+    "value": "kopiku",
+    "text": "Kopiku",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-challenge",
+    "text": "Lacoste Challenge",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-cool-play",
+    "text": "Lacoste Cool Play",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-ellegance-man",
+    "text": "Lacoste Ellegance Man",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-essential",
+    "text": "Lacoste Essential",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-essential-sport",
+    "text": "Lacoste Essential Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-hot-play",
+    "text": "Lacoste Hot Play",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-l12-green",
+    "text": "Lacoste L12 Green",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-l12-noir",
+    "text": "Lacoste L12 Noir",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-magnetic-man",
+    "text": "Lacoste Magnetic Man",
+    "category": "Pria"
+  },
+  {
+    "value": "lacoste-match-point-man",
+    "text": "Lacoste Match Point Man",
+    "category": "Pria"
+  },
+  {
+    "value": "lamborgini",
+    "text": "Lamborgini",
+    "category": "Pria"
+  },
+  {
+    "value": "lancome-miracle-man",
+    "text": "Lancome Miracle Man",
+    "category": "Pria"
+  },
+  {
+    "value": "lattafa-asad-edp-2021",
+    "text": "Lattafa Asad EDP 2021",
+    "category": "Pria"
+  },
+  {
+    "value": "leonel-messi-man",
+    "text": "Leonel Messi Man",
+    "category": "Pria"
+  },
+  {
+    "value": "loewe-man",
+    "text": "Loewe Man",
+    "category": "Pria"
+  },
+  {
+    "value": "loewe-solo-absoluto",
+    "text": "Loewe Solo Absoluto",
+    "category": "Pria"
+  },
+  {
+    "value": "loewe-solo-intense",
+    "text": "Loewe Solo Intense",
+    "category": "Pria"
+  },
+  {
+    "value": "louis-vuiton-orage-man",
+    "text": "Louis Vuiton Orage Man",
+    "category": "Pria"
+  },
+  {
+    "value": "maison-margiela-jazz-club-man",
+    "text": "Maison Margiela Jazz Club Man",
+    "category": "Pria"
+  },
+  {
+    "value": "manchester-united",
+    "text": "Manchester United",
+    "category": "Pria"
+  },
+  {
+    "value": "mercedes-bens-club-black-man",
+    "text": "Mercedes Bens Club Black Man",
+    "category": "Pria"
+  },
+  {
+    "value": "mercedes-sign",
+    "text": "Mercedes Sign",
+    "category": "Pria"
+  },
+  {
+    "value": "mercedez-benz-cologne-man",
+    "text": "Mercedez Benz Cologne Man",
+    "category": "Pria"
+  },
+  {
+    "value": "mercedez-benz-sport-man",
+    "text": "Mercedez Benz Sport Man",
+    "category": "Pria"
+  },
+  {
+    "value": "mission-pour-homme",
+    "text": "Mission Pour Homme",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-emblem",
+    "text": "Mont Blanc Emblem",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-explore",
+    "text": "Mont Blanc Explore",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-individual-man",
+    "text": "Mont Blanc Individual Man",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-legend",
+    "text": "Mont Blanc Legend",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-legend-man",
+    "text": "Mont Blanc Legend Man",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-legend-night",
+    "text": "Mont Blanc Legend Night",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-legend-red",
+    "text": "Mont Blanc Legend Red",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-legend-spirit",
+    "text": "Mont Blanc Legend Spirit",
+    "category": "Pria"
+  },
+  {
+    "value": "mont-blanc-starwalker",
+    "text": "Mont Blanc Starwalker",
+    "category": "Pria"
+  },
+  {
+    "value": "montblanc-explore-platinum",
+    "text": "Montblanc Explore Platinum",
+    "category": "Pria"
+  },
+  {
+    "value": "moschino-toy-boy-man",
+    "text": "Moschino Toy Boy Man",
+    "category": "Pria"
+  },
+  {
+    "value": "mr-burberry-element-for-man",
+    "text": "Mr Burberry Element For Man",
+    "category": "Pria"
+  },
+  {
+    "value": "nautica-ocean",
+    "text": "Nautica Ocean",
+    "category": "Pria"
+  },
+  {
+    "value": "oriflame-ascendant-masculine",
+    "text": "Oriflame Ascendant Masculine",
+    "category": "Pria"
+  },
+  {
+    "value": "oriflame-giordani-gold-masculine",
+    "text": "Oriflame Giordani Gold Masculine",
+    "category": "Pria"
+  },
+  {
+    "value": "oriflame-glacier-air-masculine",
+    "text": "Oriflame Glacier Air Masculine",
+    "category": "Pria"
+  },
+  {
+    "value": "oriflame-nordic-waters-masculine",
+    "text": "Oriflame Nordic Waters Masculine",
+    "category": "Pria"
+  },
+  {
+    "value": "oriflame-signature-generation-masculine",
+    "text": "Oriflame Signature Generation Masculine",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-d-amour-man",
+    "text": "Paco D'Amour Man",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-invictus",
+    "text": "Paco Rabanne Invictus",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-invictus-aqua",
+    "text": "Paco Rabanne Invictus Aqua",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-invictus-legend",
+    "text": "Paco Rabanne Invictus Legend",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-invictus-parfum",
+    "text": "Paco Rabanne Invictus Parfum",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-invictus-victory-2021",
+    "text": "Paco Rabanne Invictus Victory 2021",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-invictus-victory-elixir",
+    "text": "Paco Rabanne Invictus Victory Elixir",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-million-dollar-man",
+    "text": "Paco Rabanne Million Dollar Man",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-one-million",
+    "text": "Paco Rabanne One Million",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-one-million-lucky",
+    "text": "Paco Rabanne One Million Lucky",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-one-million-prive",
+    "text": "Paco Rabanne One Million Prive",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-phantom-man",
+    "text": "Paco Rabanne Phantom Man",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-pure-xs-man",
+    "text": "Paco Rabanne Pure XS Man",
+    "category": "Pria"
+  },
+  {
+    "value": "paco-rabanne-ultraviolet-man",
+    "text": "Paco Rabanne Ultraviolet Man",
+    "category": "Pria"
+  },
+  {
+    "value": "pacorabanne-pure-xs-by-night",
+    "text": "Paco Rabanne Pure XS By Night",
+    "category": "Pria"
+  },
+  {
+    "value": "paris-hilton-just-me-man",
+    "text": "Paris Hilton Just Me Man",
+    "category": "Pria"
+  },
+  {
+    "value": "pheromone-1-man-bvlgari-aqua-man",
+    "text": "Pheromone 1 Man Bvlgari Aqua Man",
+    "category": "Pria"
+  },
+  {
+    "value": "pheromone-2-man-davidoff-cool-water-man",
+    "text": "Pheromone 2 Man Davidoff Cool Water Man",
+    "category": "Pria"
+  },
+  {
+    "value": "pheromone-3-man-creed-aventus",
+    "text": "Pheromone 3 Man Creed Aventus",
+    "category": "Pria"
+  },
+  {
+    "value": "pheromone-3-man-dior-sauvage-man",
+    "text": "Pheromone 3 Man Dior Sauvage Man",
+    "category": "Pria"
+  },
+  {
+    "value": "police-the-sinner-man",
+    "text": "Police The Sinner Man",
+    "category": "Pria"
+  },
+  {
+    "value": "police-to-be-king",
+    "text": "Police To Be King",
+    "category": "Pria"
+  },
+  {
+    "value": "police-to-be-man",
+    "text": "Police To Be Man",
+    "category": "Pria"
+  },
+  {
+    "value": "prada-infusion-homm",
+    "text": "Prada Infusion Homm",
+    "category": "Pria"
+  },
+  {
+    "value": "prada-l-homme",
+    "text": "Prada L'Homme",
+    "category": "Pria"
+  },
+  {
+    "value": "prada-l-homme-water-splash",
+    "text": "Prada L'Homme Water Splash",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-black",
+    "text": "Ralph Lauren Polo Black",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-blue",
+    "text": "Ralph Lauren Polo Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-double-black",
+    "text": "Ralph Lauren Polo Double Black",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-explore",
+    "text": "Ralph Lauren Polo Explore",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-green",
+    "text": "Ralph Lauren Polo Green",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-red",
+    "text": "Ralph Lauren Polo Red",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-red-rush-edt",
+    "text": "Ralph Lauren Polo Red Rush EDT",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-red-white-blue",
+    "text": "Ralph Lauren Polo Red White Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-safari",
+    "text": "Ralph Lauren Polo Safari",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-sport",
+    "text": "Ralph Lauren Polo Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-polo-ultra-blue",
+    "text": "Ralph Lauren Polo Ultra Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "ralph-lauren-romance-silver",
+    "text": "Ralph Lauren Romance Silver",
+    "category": "Pria"
+  },
+  {
+    "value": "roberto-cavalli-uomo",
+    "text": "Roberto Cavalli Uomo",
+    "category": "Pria"
+  },
+  {
+    "value": "roja-dove-elysium-cologne-pour-home-man",
+    "text": "Roja Dove Elysium Cologne Pour Home Man",
+    "category": "Pria"
+  },
+  {
+    "value": "saint-t-dupont-pasanger",
+    "text": "Saint T Dupont Pasanger",
+    "category": "Pria"
+  },
+  {
+    "value": "salvatore-feragamo-man",
+    "text": "Salvatore Feragamo Man",
+    "category": "Pria"
+  },
+  {
+    "value": "salvatore-feragamo-free-time",
+    "text": "Salvatore Feragamo Free Time",
+    "category": "Pria"
+  },
+  {
+    "value": "salvatore-feragamo-uomo-urban-feel",
+    "text": "Salvatore Feragamo Uomo Urban Feel",
+    "category": "Pria"
+  },
+  {
+    "value": "salvatore-feragamo-intense-leather",
+    "text": "Salvatore Feragamo Intense Leather",
+    "category": "Pria"
+  },
+  {
+    "value": "shawn-mendes-signature-2017",
+    "text": "Shawn Mendes Signature 2017",
+    "category": "Pria"
+  },
+  {
+    "value": "swiss-army-victorinox-altitude",
+    "text": "Swiss Army Victorinox Altitude",
+    "category": "Pria"
+  },
+  {
+    "value": "thierry-mugler-alien-man",
+    "text": "Thierry Mugler Alien Man",
+    "category": "Pria"
+  },
+  {
+    "value": "thierry-mugler-angel-man",
+    "text": "Thierry Mugler Angel Man",
+    "category": "Pria"
+  },
+  {
+    "value": "tom-ford-noir",
+    "text": "Tom Ford Noir",
+    "category": "Pria"
+  },
+  {
+    "value": "tom-ford-ombre-leather-parfum",
+    "text": "Tom Ford Ombre Leather Parfum",
+    "category": "Pria"
+  },
+  {
+    "value": "tom-ford-oud-wood",
+    "text": "Tom Ford Oud Wood",
+    "category": "Pria"
+  },
+  {
+    "value": "tom-ford-tobacco-oud-man",
+    "text": "Tom Ford Tobacco Oud Man",
+    "category": "Pria"
+  },
+  {
+    "value": "tomford-noir-extrem-parfume",
+    "text": "Tom Ford Noir Extreme Parfum",
+    "category": "Pria"
+  },
+  {
+    "value": "tommy-boy",
+    "text": "Tommy Boy",
+    "category": "Pria"
+  },
+  {
+    "value": "tommy-hilfiger-loud-for-him",
+    "text": "Tommy Hilfiger Loud For Him",
+    "category": "Pria"
+  },
+  {
+    "value": "tommy-hilfiger-atletics",
+    "text": "Tommy Hilfiger Atletics",
+    "category": "Pria"
+  },
+  {
+    "value": "tommy-hilfiger-freedom-man",
+    "text": "Tommy Hilfiger Freedom Man",
+    "category": "Pria"
+  },
+  {
+    "value": "tommy-t",
+    "text": "Tommy T",
+    "category": "Pria"
+  },
+  {
+    "value": "trusadi-uomo",
+    "text": "Trusadi Uomo",
+    "category": "Pria"
+  },
+  {
+    "value": "versace-blue-jeans",
+    "text": "Versace Blue Jeans",
+    "category": "Pria"
+  },
+  {
+    "value": "versace-dylan-blue",
+    "text": "Versace Dylan Blue",
+    "category": "Pria"
+  },
+  {
+    "value": "versace-eros-flame-men",
+    "text": "Versace Eros Flame Men",
+    "category": "Pria"
+  },
+  {
+    "value": "versace-eros-man",
+    "text": "Versace Eros Man",
+    "category": "Pria"
+  },
+  {
+    "value": "versace-pour-homme",
+    "text": "Versace Pour Homme",
+    "category": "Pria"
+  },
+  {
+    "value": "versace-red-jeans",
+    "text": "Versace Red Jeans",
+    "category": "Pria"
+  },
+  {
+    "value": "victor-rolf-spicebomb",
+    "text": "Victor & Rolf Spicebomb",
+    "category": "Pria"
+  },
+  {
+    "value": "victor-rolf-spicebomb-extreme",
+    "text": "Victor & Rolf Spicebomb Extreme",
+    "category": "Pria"
+  },
+  {
+    "value": "wayne-roney",
+    "text": "Wayne Roney",
+    "category": "Pria"
+  },
+  {
+    "value": "ysl-y-edp-intense-man",
+    "text": "Yves Saint Laurent Y EDP Intense Man",
+    "category": "Pria"
+  },
+  {
+    "value": "ysl-y-le-parfume-2021-for-men",
+    "text": "Yves Saint Laurent Y Le Parfume 2021 For Men",
+    "category": "Pria"
+  },
+  {
+    "value": "zara-8-0-man",
+    "text": "Zara 8.0 Man",
+    "category": "Pria"
+  },
+  {
+    "value": "zara-gold-men",
+    "text": "Zara Gold Men",
+    "category": "Pria"
+  },
+  {
+    "value": "zara-night-pour-homme-ii-sport",
+    "text": "Zara Night Pour Homme II Sport",
+    "category": "Pria"
+  },
+  {
+    "value": "zara-tobacco-collection-rich-warm-addictive",
+    "text": "Zara Tobacco Collection Rich Warm Addictive",
+    "category": "Pria"
+  },
+  {
+    "value": "zara-tobacco-vanilla-collection-rich-warm-2021",
+    "text": "Zara Tobacco Vanilla Collection Rich Warm 2021",
+    "category": "Pria"
+  },
+  {
+    "value": "zara-vibrant-leather",
+    "text": "Zara Vibrant Leather",
+    "category": "Pria"
+  },
+  {
+    "value": "zara-white-warm-for-men",
+    "text": "Zara White Warm For Men",
+    "category": "Pria"
+  }
+];
 
             function populatePerfumes(category = 'Semua') {
                 parfumSelect.innerHTML = '<option value="">-- Pilih Parfum --</option>'; // Reset options
@@ -1495,9 +2268,32 @@
                 }
             }
 
-            // Initial population
-            populatePerfumes(jenisParfumSelect.value);
+            // --- Logika Baru: Baca URL parameter dan pre-select formulir ---
+            const urlParams = new URLSearchParams(window.location.search);
+            const preselectedPerfumeValue = urlParams.get('parfum');
+            const preselectedCategory = urlParams.get('category');
 
+            if (preselectedCategory) {
+                // Set dropdown kategori terlebih dahulu
+                jenisParfumSelect.value = preselectedCategory;
+                
+                // Kemudian, populate dropdown parfum berdasarkan kategori yang sudah dipilih
+                populatePerfumes(preselectedCategory);
+                
+                // Jika ada parfum spesifik yang diminta, pilih parfum tersebut
+                if (preselectedPerfumeValue) {
+                    // Beri sedikit jeda agar DOM diperbarui sebelum mencoba memilih nilai
+                    setTimeout(() => {
+                        parfumSelect.value = preselectedPerfumeValue;
+                        searchParfumInput.value = ''; // Hapus teks di input search jika parfum sudah dipilih
+                    }, 100); // Penundaan 100ms
+                }
+            } else {
+                // Jika tidak ada parameter di URL, jalankan populasi normal (misal: tampilkan semua parfum)
+                populatePerfumes(jenisParfumSelect.value);
+            }
+
+            // Event listeners (pastikan setelah logika pre-selection agar tidak menimpa)
             jenisParfumSelect.addEventListener('change', function() {
                 populatePerfumes(this.value);
                 searchParfumInput.value = ''; // Clear search when category changes
@@ -1511,41 +2307,46 @@
             document.querySelector('nav a[href="pemesanan.html"]').classList.add('active-nav');
 
 
-            // Handle form submission (contoh sederhana, bisa dikembangkan)
+            // Handle form submission
             const orderForm = document.getElementById('orderForm');
             orderForm.addEventListener('submit', function(event) {
-                event.preventDefault(); // Mencegah form submit secara default
+                event.preventDefault();
                 
                 const nama = document.getElementById('nama').value;
-                const tanggalLahir = document.getElementById('tgl lahir').value;
                 const telepon = document.getElementById('telepon').value;
+                const tanggalLahir = document.getElementById('tanggalLahir').value; // Ambil nilai tanggal lahir
                 const alamat = document.getElementById('alamat').value;
                 const jenisParfum = jenisParfumSelect.value;
-                const parfum = parfumSelect.options[parfumSelect.selectedIndex].text; // Ambil teks yang dipilih
-                const ukuran = document.getElementById('ukuran').value;
-                const keterangan = document.getElementById('keterangan').value;
+                const parfum = parfumSelect.options[parfumSelect.selectedIndex].text;
+                const ukuran = document.getElementById('ukuran').value; // Mengambil nilai dari <select>
+                const keinginan = document.getElementById('keinginan').value; // Ambil nilai keinginan
 
                 if (!parfum || parfum === "-- Pilih Parfum --" || parfum === "Tidak ada parfum ditemukan.") {
                     alert("Mohon pilih parfum yang valid.");
                     return;
                 }
+                if (!ukuran) { // Validasi jika ukuran belum dipilih
+                    alert("Mohon pilih ukuran parfum.");
+                    return;
+                }
 
                 const message = `Halo, saya ingin memesan parfum dengan detail sebagai berikut:\n\n` +
                                 `Nama: ${nama}\n` +
-                                `Tanggal Lahir: ${tanggalLahir || 'Tidak disebutkan'}\n\n` + 
                                 `No. Telepon: ${telepon}\n` +
+                                `Tanggal Lahir: ${tanggalLahir || 'Tidak disebutkan'}\n` + // Tambahkan tanggal lahir
                                 `Alamat: ${alamat}\n` +
                                 `Jenis Parfum: ${jenisParfum}\n` +
                                 `Parfum: ${parfum}\n` +
-                                `Ukuran: ${ukuran} ml\n\n` +
-                                `Keterangan: ${keterangan || 'Tidak disebutkan'}\n` +
+                                `Ukuran: ${ukuran} ml\n` + // Menggunakan nilai ukuran yang dipilih
+                                `Keinginan: ${keinginan || 'Tidak disebutkan'}\n\n` + // Tambahkan keinginan
                                 `Terima kasih.`;
 
                 // Ganti nomor WhatsApp di sini jika perlu
-                const whatsappUrl = `https://wa.me/6285142156602?text=${encodeURIComponent(message)}`;
+                const whatsappUrl = `https://wa.me/6285263156641?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, '_blank');
             });
         });
     </script>
 </body>
+
 </html>
